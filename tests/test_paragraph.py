@@ -222,3 +222,157 @@ def test_Paragraph_wordSpacing(paragraph_builder, textlayout_text_style, textlay
         return paragraph
 
     assert graf_with_word_spacing(spacing_a).LongestLine < graf_with_word_spacing(spacing_b).LongestLine
+
+
+def graf_with_text_height(font_collection, height_override, height, font_size=20.0):
+    font_collection.setDefaultFontManager(skia.FontMgr())
+
+    text_style = skia.textlayout.TextStyle()
+    text_style.setFontSize(font_size)
+    text_style.setHeightOverride(height_override)
+    text_style.setHalfLeading(True)
+    text_style.setHeight(height)
+
+    paragraph_style = skia.textlayout.ParagraphStyle()
+
+    builder = skia.textlayout.ParagraphBuilder.make(
+        paragraph_style, font_collection, skia.Unicodes.ICU.Make()
+    )
+    builder.pushStyle(text_style)
+
+    builder.addText("o\no")
+    paragraph = builder.Build()
+    paragraph.layout(300)
+
+    return paragraph
+
+
+@pytest.mark.parametrize('height', [1.0, 2.0, 3.0])
+def test_Paragraph_textStyleHeightIsMultiple(textlayout_font_collection, height):
+    font_size = 20.0
+    paragraph = graf_with_text_height(textlayout_font_collection, True, height, font_size)
+
+    assert paragraph.Height == pytest.approx(2 * font_size * height, abs=1)
+
+
+def graf_with_baseline_shift(font_collection, shift, font_size=20.0):
+    font_collection.setDefaultFontManager(skia.FontMgr())
+
+    def style(baseline_shift):
+        text_style = skia.textlayout.TextStyle()
+        text_style.setFontSize(font_size)
+        text_style.setBaselineShift(baseline_shift)
+        return text_style
+
+    builder = skia.textlayout.ParagraphBuilder.make(
+        skia.textlayout.ParagraphStyle(), font_collection, skia.Unicodes.ICU.Make()
+    )
+    builder.pushStyle(style(0.0))
+    builder.addText("Base")
+    builder.pop()
+    builder.pushStyle(style(shift))
+    builder.addText("X")
+
+    paragraph = builder.Build()
+    paragraph.layout(300)
+
+    return paragraph
+
+
+@pytest.mark.parametrize('test_operator, shift_a, shift_b', [
+    (operator.eq, -8.0, 8.0),
+    (operator.lt, 0.0, 8.0),
+    (operator.lt, 0.0, -8.0),
+    (operator.lt, 8.0, 15.0),
+])
+def test_Paragraph_baselineShiftGrowsLine(textlayout_font_collection, test_operator, shift_a, shift_b):
+    paragraph_a_height = graf_with_baseline_shift(textlayout_font_collection, shift_a).Height
+    paragraph_b_height = graf_with_baseline_shift(textlayout_font_collection, shift_b).Height
+
+    assert test_operator(paragraph_a_height, paragraph_b_height)
+
+
+def graf_with_strut_font(font_collection, strut_size, strut_height, force_strut_height=False):
+    font_collection.setDefaultFontManager(skia.FontMgr())
+
+    strut_style = skia.textlayout.StrutStyle()
+    strut_style.setStrutEnabled(True)
+    strut_style.setFontSize(strut_size)
+    strut_style.setHeightOverride(True)
+    strut_style.setHeight(strut_height)
+    strut_style.setForceStrutHeight(force_strut_height)
+
+    paragraph_style = skia.textlayout.ParagraphStyle()
+    paragraph_style.setStrutStyle(strut_style)
+
+    small = skia.textlayout.TextStyle()
+    small.setFontSize(12.0)
+    large = skia.textlayout.TextStyle()
+    large.setFontSize(36.0)
+
+    builder = skia.textlayout.ParagraphBuilder.make(
+        paragraph_style, font_collection, skia.Unicodes.ICU.Make()
+    )
+    builder.pushStyle(small)
+    builder.addText("small\n")
+    builder.pop()
+    builder.pushStyle(large)
+    builder.addText("LARGE")
+
+    paragraph = builder.Build()
+    paragraph.layout(600)
+
+    return paragraph
+
+
+@pytest.mark.parametrize('strut_size, strut_height', [
+    (14.0, 1.0),
+    (20.0, 1.0),
+    (20.0, 2.0),
+])
+def test_Paragraph_strutStyleForceStrutHeight(textlayout_font_collection, strut_size, strut_height):
+    forced = graf_with_strut_font(textlayout_font_collection, strut_size, strut_height, True)
+    unforced = graf_with_strut_font(textlayout_font_collection, strut_size, strut_height, False)
+
+    assert forced.Height == pytest.approx(2 * strut_size * strut_height, abs=1)
+    assert forced.Height <= unforced.Height
+
+
+# Each paragraph gets its own FontCollection: the shaping cache is not keyed on half
+# leading, so sharing one would make this test pass without testing anything.
+
+def graf_with_half_leading(half_leading, height=1.0, font_size=20.0, height_override=True):
+    font_collection = skia.textlayout.FontCollection()
+    font_collection.setDefaultFontManager(skia.FontMgr())
+
+    text_style = skia.textlayout.TextStyle()
+    text_style.setFontSize(font_size)
+    text_style.setHeightOverride(height_override)
+    text_style.setHeight(height)
+    text_style.setHalfLeading(half_leading)
+
+    paragraph_style = skia.textlayout.ParagraphStyle()
+    paragraph_style.setTextStyle(text_style)
+
+    builder = skia.textlayout.ParagraphBuilder.make(
+        paragraph_style, font_collection, skia.Unicodes.ICU.Make()
+    )
+    builder.pushStyle(text_style)
+    builder.addText("Ag")
+
+    paragraph = builder.Build()
+    paragraph.layout(300)
+
+    return paragraph
+
+
+def test_Paragraph_halfLeading():
+    font_size = 20.0
+    natural = graf_with_half_leading(False, 1.0, font_size, height_override=False).Height
+    height = 2.0 * natural / font_size
+
+    half = graf_with_half_leading(True, height, font_size)
+    scaled = graf_with_half_leading(False, height, font_size)
+
+    assert half.Height == pytest.approx(scaled.Height, abs=0.01)
+    assert half.AlphabeticBaseline < scaled.AlphabeticBaseline
