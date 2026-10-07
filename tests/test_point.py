@@ -105,6 +105,13 @@ def test_Point_init(args):
     assert isinstance(skia.Point(*args), skia.Point)
 
 
+def test_Point_Offset():
+    points = [skia.Point(1, 2), skia.Point(3, 4)]
+    points = skia.Point.Offset(points, 1, 1)
+    assert points[0].equals(2, 3)
+    assert points[1].equals(4, 5)
+
+
 def test_Point_x(point):
     assert point.x() == 4
 
