@@ -15,11 +15,11 @@ Binary package is available on PyPI:
 pip install skia-python
 ```
 
-Supported platforms: Python 3.8-3.14 (CPython) on
+Supported platforms: Python 3.8-3.15 (CPython) on
 
 - Linux x86_64, aarch64
 - macOS x86_64, arm64
-- Windows x86_64, arm64 ; arm64 for the windows 11 and Python 3.11-3.14 combination only.
+- Windows x86_64, arm64 ; arm64 for the windows 11 and Python 3.11-3.15 combination only.
 
 **IMPORTANT:** Starting v87.9rc1 / v138.0rc1, `libEGL.so` (from mesa-libEGL, libglvnd, or your graphic
 card's vendor e.g. NVidia) is required to be present on Linux hosts. This is associated
