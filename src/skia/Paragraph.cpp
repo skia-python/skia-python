@@ -97,6 +97,41 @@ strut_style
         R"docstring(
         )docstring",
         py::arg("leading"))
+    .def("setHeight",
+        py::overload_cast<const SkScalar>(&StrutStyle::setHeight),
+        R"docstring(
+        )docstring",
+        py::arg("height"))
+    .def("setHeightOverride",
+        py::overload_cast<const bool>(&StrutStyle::setHeightOverride),
+        R"docstring(
+        )docstring",
+        py::arg("heightoverride"))
+    .def("setForceStrutHeight",
+        py::overload_cast<const bool>(&StrutStyle::setForceStrutHeight),
+        R"docstring(
+        )docstring",
+        py::arg("forcestrutheight"))
+    .def("setFontFamilies",
+        py::overload_cast<std::vector<SkString>>(&StrutStyle::setFontFamilies),
+        R"docstring(
+        )docstring",
+        py::arg("families"))
+    .def("setFontSize",
+        py::overload_cast<SkScalar>(&StrutStyle::setFontSize),
+        R"docstring(
+        )docstring",
+        py::arg("size"))
+    .def("setFontStyle",
+        py::overload_cast<SkFontStyle>(&StrutStyle::setFontStyle),
+        R"docstring(
+        )docstring",
+        py::arg("fontstyle"))
+    .def("setHalfLeading",
+        py::overload_cast<const bool>(&StrutStyle::setHalfLeading),
+        R"docstring(
+        )docstring",
+        py::arg("halfleading"))
     ;
 
 paragraph_style
@@ -211,6 +246,26 @@ text_style
         R"docstring(
         )docstring",
         py::arg("m"))
+    .def("setHeight",
+        py::overload_cast<SkScalar>(&TextStyle::setHeight),
+        R"docstring(
+        )docstring",
+        py::arg("height"))
+    .def("setHeightOverride",
+        py::overload_cast<bool>(&TextStyle::setHeightOverride),
+        R"docstring(
+        )docstring",
+        py::arg("heightoverride"))
+    .def("setHalfLeading",
+        py::overload_cast<bool>(&TextStyle::setHalfLeading),
+        R"docstring(
+        )docstring",
+        py::arg("halfleading"))
+    .def("setBaselineShift",
+        py::overload_cast<SkScalar>(&TextStyle::setBaselineShift),
+        R"docstring(
+        )docstring",
+        py::arg("baselineshift"))
     ;
 
 paragraph
