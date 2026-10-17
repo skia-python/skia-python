@@ -433,3 +433,24 @@ def test_Matrix_InvalidMatrix():
 
 def test_Matrix_Concat(matrix):
     assert isinstance(skia.Matrix.Concat(matrix, matrix), skia.Matrix)
+
+
+@pytest.fixture
+def m44():
+    return skia.M44()
+
+
+def test_m44_set_outofbound(m44):
+    try:
+        outofbound = m44.rc(4,0)
+        raise RuntimeError('Not reachable - Out of Bound is expected, so you should not see this!')
+    except ValueError:
+        # expected.
+        pass
+
+
+def test_m44_set_and_get(m44):
+    oldvalue = m44.rc(3,2)
+    m44.setRC(3,2, 100)
+    assert m44.rc(3,2) == 100
+    m44.setRC(3,2, oldvalue)

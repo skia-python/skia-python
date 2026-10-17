@@ -1812,6 +1812,84 @@ py::class_<SkM44>(m, "M44", R"docstring(
     down +Z goes into the screen (away from the viewer)
     )docstring")
     .def(py::init<>())
+    .def(py::init<const SkMatrix&>(), py::arg("src"))
+    .def(py::init<const SkM44&, const SkM44&>(), py::arg("a"), py::arg("b"))
+    .def_static("Rows", &SkM44::Rows,
+        py::arg("r0"), py::arg("r1"), py::arg("r2"), py::arg("r3"))
+    .def_static("Cols", &SkM44::Cols,
+        py::arg("c0"), py::arg("c1"), py::arg("c2"), py::arg("c3"))
+    .def_static("RowMajor", &SkM44::RowMajor, py::arg("r"))
+    .def_static("ColMajor", &SkM44::ColMajor, py::arg("c"))
+    .def_static("Translate", &SkM44::Translate,
+        py::arg("x"), py::arg("y"), py::arg("z") = 0)
+    .def_static("Scale", &SkM44::Scale,
+        py::arg("x"), py::arg("y"), py::arg("z") = 1)
+    .def_static("Rotate", &SkM44::Rotate,
+        py::arg("axis"), py::arg("radians"))
+    .def_static("RectToRect", &SkM44::RectToRect,
+        py::arg("src"), py::arg("dst"))
+    .def_static("LookAt", &SkM44::LookAt,
+        py::arg("eye"), py::arg("center"), py::arg("up"))
+    .def_static("Perspective", &SkM44::Perspective,
+        py::arg("near"), py::arg("far"), py::arg("angle"))
+    .def("rc",
+        [] (const SkM44& self, int r, int c) {
+            if ((r < 0) || (r > 3) || (c < 0) || (c > 3))
+                throw py::value_error("Indices must be between 0 to 3.");
+            return self.rc(r, c);
+        },
+        R"docstring(
+        Returns one matrix value from a particular row/column.
+
+        :param r:  matrix row to fetch
+        :param c:  matrix column to fetch
+        :return:   value at the given matrix position
+        )docstring",
+        py::arg("r"), py::arg("c"))
+    .def("setRC",
+        [] (SkM44& self, int r, int c, SkScalar value) {
+            if ((r < 0) || (r > 3) || (c < 0) || (c > 3))
+                throw py::value_error("Indices must be between 0 to 3.");
+            self.setRC(r, c, value);
+        },
+        R"docstring(
+        Set one matrix value at a particular row/column.
+
+        :param r:  matrix row to set
+        :param c:  matrix column to set
+        :param value:  value to set
+        )docstring",
+        py::arg("r"), py::arg("c"), py::arg("value"))
+    .def("setIdentity", &SkM44::setIdentity)
+    .def("setTranslate", &SkM44::setTranslate,
+        py::arg("x"), py::arg("y"), py::arg("z") = 0)
+    .def("setScale", &SkM44::setScale,
+        py::arg("x"), py::arg("y"), py::arg("z") = 1)
+    .def("setRotateUnitSinCos", &SkM44::setRotateUnitSinCos,
+        py::arg("axis"), py::arg("sinAngle"), py::arg("cosAngle"))
+    .def("setRotateUnit", &SkM44::setRotateUnit,
+        py::arg("axis"), py::arg("radians"))
+    .def("setRotate", &SkM44::setRotate,
+        py::arg("axis"), py::arg("radians"))
+    .def("setConcat", &SkM44::setConcat,
+        py::arg("a"), py::arg("b"))
+    .def("preConcat", py::overload_cast<const SkM44&>(&SkM44::preConcat),
+        py::arg("m"))
+    .def("postConcat", &SkM44::postConcat,
+        py::arg("m"))
+    .def("normalizePerspective", &SkM44::normalizePerspective)
+    .def("isFinite", &SkM44::isFinite)
+    .def("asM33", &SkM44::asM33)
+    .def("preTranslate", &SkM44::preTranslate,
+        py::arg("x"), py::arg("y"), py::arg("z") = 0)
+    .def("postTranslate", &SkM44::postTranslate,
+        py::arg("x"), py::arg("y"), py::arg("z") = 0)
+    .def("preScale", py::overload_cast<SkScalar, SkScalar>(&SkM44::preScale),
+        py::arg("x"), py::arg("y"))
+    .def("preScale", py::overload_cast<SkScalar, SkScalar, SkScalar>(&SkM44::preScale),
+        py::arg("x"), py::arg("y"), py::arg("z"))
+    .def("preConcat", py::overload_cast<const SkMatrix&>(&SkM44::preConcat),
+        py::arg("m"))
     ;
 
 // RSXform
