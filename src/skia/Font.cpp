@@ -2,6 +2,7 @@
 #include <include/core/SkFontMetrics.h>
 #include <include/ports/SkFontMgr_directory.h>
 #include <include/ports/SkFontMgr_empty.h>
+#include <include/ports/SkFontScanner_FreeType.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
 #include <pybind11/iostream.h>
@@ -369,6 +370,22 @@ fontarguments
     .def("getCollectionIndex", &SkFontArguments::getCollectionIndex)
     .def("getVariationDesignPosition",
         &SkFontArguments::getVariationDesignPosition)
+    ;
+
+py::class_<SkFontScanner> font_scanner(m, "FontScanner");
+
+font_scanner
+    .def(py::init(&SkFontScanner_Make_FreeType))
+    .def("scanFile", &SkFontScanner::scanFile,
+        py::arg("stream"), py::arg("numFaces"))
+    .def("scanFace", &SkFontScanner::scanFace,
+        py::arg("stream"), py::arg("faceIndex"), py::arg("numInstances"))
+    .def("MakeFromData",
+        [] (const SkFontScanner& self, sk_sp<SkData> data, const SkFontArguments& args) {
+            std::unique_ptr<SkStreamAsset> stream(new SkMemoryStream(data));
+            return self.MakeFromStream(std::move(stream), args);
+        },
+        py::arg("data"), py::arg("args"))
     ;
 
 py::class_<SkTypeface, sk_sp<SkTypeface>, SkRefCnt> typeface(
