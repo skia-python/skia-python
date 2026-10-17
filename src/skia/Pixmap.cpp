@@ -826,6 +826,12 @@ yuvapixmapinfo
     .def("initPixmapsFromSingleAllocation",
         [] (const SkYUVAPixmapInfo& self, py::buffer b) {
             auto buffer = b.request();
+            size_t size = (buffer.ndim) ? buffer.strides[0] * buffer.shape[0] : 0;
+            if (self.computeTotalBytes() > size) {
+                throw py::value_error(py::str(
+                    "Allocation too small ({} < {})").format(
+                        size, self.computeTotalBytes()));
+            }
             std::vector<SkPixmap> pixmaps(SkYUVAPixmapInfo::kMaxPlanes);
             auto result = self.initPixmapsFromSingleAllocation(
                 buffer.ptr, pixmaps.data());
@@ -879,6 +885,12 @@ py::class_<SkYUVAPixmaps>(m, "YUVAPixmaps",
     .def_static("FromExternalMemory",
         [] (const SkYUVAPixmapInfo& info, py::buffer b) {
             auto buffer = b.request();
+            size_t size = (buffer.ndim) ? buffer.strides[0] * buffer.shape[0] : 0;
+            if (info.computeTotalBytes() > size) {
+                throw py::value_error(py::str(
+                    "Memory backstore too small ({} < {})").format(
+                        size, info.computeTotalBytes()));
+            }
             return SkYUVAPixmaps::FromExternalMemory(info, buffer.ptr);
         },
         R"docstring(
