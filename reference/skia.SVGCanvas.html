@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontScanner.html">FontScanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
@@ -321,7 +322,7 @@
 calls, and send them to the provided stream. Ownership of the stream is
 not transfered, and it must remain valid for the lifetime of the
 returned canvas:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">&#39;output.svg&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">'output.svg'</span><span class="p">)</span>
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">SVGCanvas</span><span class="o">.</span><span class="n">Make</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">),</span> <span class="n">stream</span><span class="p">)</span>
 <span class="n">draw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
 <span class="c1"># Make sure to delete the canvas before the stream goes out of scope</span>

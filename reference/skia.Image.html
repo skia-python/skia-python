@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontScanner.html">FontScanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
@@ -308,10 +309,10 @@ streams, GPU texture, YUV_ColorSpace data, or hardware buffer. Encoded
 streams supported include BMP, GIF, HEIF, ICO, JPEG, PNG, WBMP, WebP.
 Supported encoding details vary with platform.</p>
 <p><code class="docutils literal notranslate"><span class="pre">skia-python</span></code> supports a few high-level methods in addition to C++ API:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/image.png&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'/path/to/image.png'</span><span class="p">)</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">alphaType</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">kUnpremul_AlphaType</span><span class="p">)</span>
-<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;/path/to/output.jpg&#39;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kJPEG</span><span class="p">)</span>
+<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'/path/to/output.jpg'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kJPEG</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>NumPy arrays can be directly imported or exported:</p>
@@ -1719,7 +1720,7 @@ translation</p></li>
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Image.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#skia.Image" title="skia.Image"><span class="pre">skia.Image</span></a></span></span><a class="headerlink" href="#skia.Image.open" title="Link to this definition"></a></dt>
 <dd><p>Creates <a class="reference internal" href="#skia.Image" title="skia.Image"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Image</span></code></a> from file path or file-like object.</p>
 <p>Shortcut for the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">&#39;seek&#39;</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">'read'</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">'seek'</span><span class="p">):</span>
     <span class="n">fp</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">MakeWithCopy</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 <span class="k">else</span><span class="p">:</span>
@@ -1978,10 +1979,10 @@ added to the local cache.</p>
 <dd><p>Saves <a class="reference internal" href="#skia.Image" title="skia.Image"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Image</span></code></a> to file path or file-like object.</p>
 <p>Shortcut for the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">encodeToData</span><span class="p">(</span><span class="n">encodedImageFormat</span><span class="p">,</span> <span class="n">quality</span><span class="p">)</span>
-<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">&#39;write&#39;</span><span class="p">):</span>
+<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">'write'</span><span class="p">):</span>
     <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -49,6 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="canvas.html">Canvas Creation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Path Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paint.html">Paint Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paragraph.html">Paragraph Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#notebook-examples">Notebook examples</a></li>
 </ul>
 </li>
@@ -153,9 +154,9 @@ new Contour.</p>
 <p><cite>Example</cite>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">font</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">()</span>
 <span class="n">paint</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span><span class="n">AntiAlias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">drawString</span><span class="p">(</span><span class="s2">&quot;1st contour&quot;</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">drawString</span><span class="p">(</span><span class="s2">&quot;2nd contour&quot;</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">drawString</span><span class="p">(</span><span class="s2">&quot;3rd contour&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">drawString</span><span class="p">(</span><span class="s2">"1st contour"</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">drawString</span><span class="p">(</span><span class="s2">"2nd contour"</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">drawString</span><span class="p">(</span><span class="s2">"3rd contour"</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 <span class="n">paint</span><span class="o">.</span><span class="n">setStyle</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="o">.</span><span class="n">kStroke_Style</span><span class="p">)</span>
 <span class="n">path</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Path</span><span class="p">()</span>
 <span class="n">path</span><span class="o">.</span><span class="n">moveTo</span><span class="p">(</span><span class="mi">124</span><span class="p">,</span> <span class="mi">108</span><span class="p">)</span>

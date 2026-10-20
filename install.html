@@ -155,10 +155,10 @@
 <p>Set up <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to the <code class="docutils literal notranslate"><span class="pre">depot_tools</span></code>. build skia library. At this point,
 <code class="docutils literal notranslate"><span class="pre">python</span></code> executable should be python 3. Note the build tools require
 relatively new glibc and python 3.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/depot_tools:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/depot_tools:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="nb">cd</span><span class="w"> </span>skia
 python<span class="w"> </span>tools/git-sync-deps
-bin/gn<span class="w"> </span>gen<span class="w"> </span>out/Release<span class="w"> </span>--args<span class="o">=</span><span class="s1">&#39;is_official_build=true skia_enable_tools=true skia_use_system_libjpeg_turbo=false skia_use_system_libwebp=false skia_use_system_libpng=false skia_use_system_icu=false skia_use_system_harfbuzz=false extra_cflags_cc=[&quot;-frtti&quot;] extra_ldflags=[&quot;-lrt&quot;]&#39;</span>
+bin/gn<span class="w"> </span>gen<span class="w"> </span>out/Release<span class="w"> </span>--args<span class="o">=</span><span class="s1">'is_official_build=true skia_enable_tools=true skia_use_system_libjpeg_turbo=false skia_use_system_libwebp=false skia_use_system_libpng=false skia_use_system_icu=false skia_use_system_harfbuzz=false extra_cflags_cc=["-frtti"] extra_ldflags=["-lrt"]'</span>
 ninja<span class="w"> </span>-C<span class="w"> </span>out/Release<span class="w"> </span>skia<span class="w"> </span>skia.h
 <span class="nb">cd</span><span class="w"> </span>..
 </pre></div>
@@ -179,10 +179,10 @@ python<span class="w"> </span>setup.py<span class="w"> </span>bdist_wheel
 <li><p>Xcode Command Line Tools</p></li>
 </ul>
 <p>Set up <code class="docutils literal notranslate"><span class="pre">PATH</span></code> to the <code class="docutils literal notranslate"><span class="pre">depot_tools</span></code>, and build skia library.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/depot_tools:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/depot_tools:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="nb">cd</span><span class="w"> </span>skia
 python3<span class="w"> </span>tools/git-sync-deps
-bin/gn<span class="w"> </span>gen<span class="w"> </span>out/Release<span class="w"> </span>--args<span class="o">=</span><span class="s1">&#39;is_official_build=true skia_enable_tools=true skia_use_system_libjpeg_turbo=false skia_use_system_libwebp=false skia_use_system_libpng=false skia_use_system_icu=false skia_use_system_harfbuzz=false extra_cflags_cc=[&quot;-frtti&quot;]&#39;</span>
+bin/gn<span class="w"> </span>gen<span class="w"> </span>out/Release<span class="w"> </span>--args<span class="o">=</span><span class="s1">'is_official_build=true skia_enable_tools=true skia_use_system_libjpeg_turbo=false skia_use_system_libwebp=false skia_use_system_libpng=false skia_use_system_icu=false skia_use_system_harfbuzz=false extra_cflags_cc=["-frtti"]'</span>
 ninja<span class="w"> </span>-C<span class="w"> </span>out/Release<span class="w"> </span>skia<span class="w"> </span>skia.h
 <span class="nb">cd</span><span class="w"> </span>..
 </pre></div>
@@ -204,11 +204,11 @@ python<span class="w"> </span>setup.py<span class="w"> </span>bdist_wheel
 <li><p>Visual C++ version that supports C++17</p></li>
 </ul>
 <p>Windows binary can be built using the generic steps above.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$env:Path</span> <span class="p">+=</span> <span class="s2">&quot;;$pwd\depot_tools&quot;</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nv">$env:Path</span> <span class="p">+=</span> <span class="s2">";$pwd\depot_tools"</span>
 
 <span class="nb">cd </span><span class="n">skia</span>
 <span class="n">python</span> <span class="n">tools</span><span class="p">\</span><span class="n">git-sync-deps</span>
-<span class="n">bin</span><span class="p">\</span><span class="n">gn</span> <span class="n">gen</span> <span class="n">out</span><span class="p">\</span><span class="n">Release</span> <span class="p">-</span><span class="n">-args</span><span class="p">=</span><span class="s2">&quot;is_official_build=true skia_enable_tools=true skia_use_system_libjpeg_turbo=false skia_use_system_libwebp=false skia_use_system_libpng=false skia_use_system_icu=false skia_use_system_harfbuzz=false skia_use_system_expat=false skia_use_system_zlib=false extra_cflags_cc=[\&quot;</span><span class="p">/</span><span class="n">GR</span><span class="p">\</span><span class="s2">&quot;, \&quot;</span><span class="p">/</span><span class="n">EHsc</span><span class="p">\</span><span class="s2">&quot;, \&quot;</span><span class="p">/</span><span class="n">MD</span><span class="p">\</span><span class="s2">&quot;] target_cpu=\&quot;</span><span class="n">x86_64</span><span class="p">\</span><span class="s2">&quot;&quot;</span>
+<span class="n">bin</span><span class="p">\</span><span class="n">gn</span> <span class="n">gen</span> <span class="n">out</span><span class="p">\</span><span class="n">Release</span> <span class="p">-</span><span class="n">-args</span><span class="p">=</span><span class="s2">"is_official_build=true skia_enable_tools=true skia_use_system_libjpeg_turbo=false skia_use_system_libwebp=false skia_use_system_libpng=false skia_use_system_icu=false skia_use_system_harfbuzz=false skia_use_system_expat=false skia_use_system_zlib=false extra_cflags_cc=[\"</span><span class="p">/</span><span class="n">GR</span><span class="p">\</span><span class="s2">", \"</span><span class="p">/</span><span class="n">EHsc</span><span class="p">\</span><span class="s2">", \"</span><span class="p">/</span><span class="n">MD</span><span class="p">\</span><span class="s2">"] target_cpu=\"</span><span class="n">x86_64</span><span class="p">\</span><span class="s2">""</span>
 <span class="n">ninja</span> <span class="n">-C</span> <span class="n">out</span><span class="p">\</span><span class="n">Release</span> <span class="n">skia</span> <span class="n">skia</span><span class="p">.</span><span class="nb">h</span>
 <span class="nb">cd </span><span class="p">..</span>
 

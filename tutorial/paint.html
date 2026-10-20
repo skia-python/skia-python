@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Development" href="../development.html" />
+    <link rel="next" title="Paragraph Overview" href="paragraph.html" />
     <link rel="prev" title="Path Overview" href="path.html" /> 
 </head>
 
@@ -88,6 +88,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="paragraph.html">Paragraph Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#notebook-examples">Notebook examples</a></li>
 </ul>
 </li>
@@ -147,8 +148,8 @@ maintain the stack of matrix and clip settings.</p>
     <span class="n">AntiAlias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">Color</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="mi">136</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">136</span><span class="p">))</span>
 
-<span class="n">blob1</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">&quot;Skia!&quot;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">64.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
-<span class="n">blob2</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">&quot;Skia!&quot;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">64.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">blob1</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">"Skia!"</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">64.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">blob2</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">"Skia!"</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mf">64.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 
 <span class="n">canvas</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorWHITE</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawTextBlob</span><span class="p">(</span><span class="n">blob1</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">64.0</span><span class="p">,</span> <span class="n">paint1</span><span class="p">)</span>
@@ -172,7 +173,7 @@ modifying them as the drawing proceeds.</p>
 <span class="n">strokePaint</span><span class="o">.</span><span class="n">setStrokeWidth</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawOval</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">Rect</span><span class="o">.</span><span class="n">MakeXYWH</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">strokePaint</span><span class="p">)</span>
 
-<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">&quot;SKIA&quot;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">"SKIA"</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
 
 <span class="n">fillPaint</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorSetARGB</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">))</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawTextBlob</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">fillPaint</span><span class="p">)</span>
@@ -271,7 +272,7 @@ gradient.</p>
 <span class="n">canvas</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorWHITE</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">modes</span><span class="p">)</span>
 <span class="n">K</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="k">assert</span> <span class="n">K</span> <span class="o">*</span> <span class="mi">64</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">,</span> <span class="s2">&quot;Not tall enough&quot;</span>
+<span class="k">assert</span> <span class="n">K</span> <span class="o">*</span> <span class="mi">64</span> <span class="o">&gt;=</span> <span class="mi">640</span><span class="p">,</span> <span class="s2">"Not tall enough"</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">skia</span><span class="o">.</span><span class="n">AutoCanvasRestore</span><span class="p">(</span><span class="n">canvas</span><span class="p">):</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mf">192.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="n">K</span><span class="p">),</span> <span class="mf">64.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">K</span><span class="p">))</span>
@@ -295,14 +296,14 @@ gradient.</p>
 <section id="bitmap-shader">
 <h3>Bitmap Shader<a class="headerlink" href="#bitmap-shader" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">MakeFromEncoded</span><span class="p">(</span>
-    <span class="n">skia</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">MakeFromFileName</span><span class="p">(</span><span class="s1">&#39;../skia/resources/images/color_wheel.png&#39;</span><span class="p">))</span>
+    <span class="n">skia</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">MakeFromFileName</span><span class="p">(</span><span class="s1">'../skia/resources/images/color_wheel.png'</span><span class="p">))</span>
 
 <span class="n">canvas</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorWHITE</span><span class="p">)</span>
 <span class="n">matrix</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Matrix</span><span class="p">()</span>
 <span class="n">matrix</span><span class="o">.</span><span class="n">setScale</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
 <span class="n">matrix</span><span class="o">.</span><span class="n">preRotate</span><span class="p">(</span><span class="mf">30.0</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span>
-    <span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">makeShader</span><span class="p">(</span>
+    <span class="s1">'Shader'</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">makeShader</span><span class="p">(</span>
         <span class="n">skia</span><span class="o">.</span><span class="n">TileMode</span><span class="o">.</span><span class="n">kRepeat</span><span class="p">,</span>
         <span class="n">skia</span><span class="o">.</span><span class="n">TileMode</span><span class="o">.</span><span class="n">kRepeat</span><span class="p">,</span>
         <span class="n">matrix</span>
@@ -315,7 +316,7 @@ gradient.</p>
 <section id="radial-gradient-shader">
 <h3>Radial Gradient Shader<a class="headerlink" href="#radial-gradient-shader" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span>
-    <span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">GradientShader</span><span class="o">.</span><span class="n">MakeRadial</span><span class="p">(</span>
+    <span class="s1">'Shader'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">GradientShader</span><span class="o">.</span><span class="n">MakeRadial</span><span class="p">(</span>
         <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mf">128.0</span><span class="p">,</span> <span class="mf">128.0</span><span class="p">),</span>
         <span class="n">radius</span><span class="o">=</span><span class="mf">180.0</span><span class="p">,</span>
         <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorBLUE</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">ColorYELLOW</span><span class="p">]</span>
@@ -328,7 +329,7 @@ gradient.</p>
 <section id="two-point-conical-gradient-shader">
 <h3>Two-Point Conical Gradient Shader<a class="headerlink" href="#two-point-conical-gradient-shader" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span>
-    <span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">GradientShader</span><span class="o">.</span><span class="n">MakeTwoPointConical</span><span class="p">(</span>
+    <span class="s1">'Shader'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">GradientShader</span><span class="o">.</span><span class="n">MakeTwoPointConical</span><span class="p">(</span>
         <span class="n">start</span><span class="o">=</span><span class="p">(</span><span class="mf">128.0</span><span class="p">,</span> <span class="mf">128.0</span><span class="p">),</span>
         <span class="n">startRadius</span><span class="o">=</span><span class="mf">128.0</span><span class="p">,</span>
         <span class="n">end</span><span class="o">=</span><span class="p">(</span><span class="mf">128.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">),</span>
@@ -343,7 +344,7 @@ gradient.</p>
 <section id="sweep-gradient-shader">
 <h3>Sweep Gradient Shader<a class="headerlink" href="#sweep-gradient-shader" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span>
-    <span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">GradientShader</span><span class="o">.</span><span class="n">MakeSweep</span><span class="p">(</span>
+    <span class="s1">'Shader'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">GradientShader</span><span class="o">.</span><span class="n">MakeSweep</span><span class="p">(</span>
         <span class="n">cx</span><span class="o">=</span><span class="mf">128.0</span><span class="p">,</span>
         <span class="n">cy</span><span class="o">=</span><span class="mf">128.0</span><span class="p">,</span>
         <span class="n">colors</span><span class="o">=</span><span class="p">[</span>
@@ -361,7 +362,7 @@ gradient.</p>
 <section id="fractal-perlin-noise-shader">
 <h3>Fractal Perlin Noise Shader<a class="headerlink" href="#fractal-perlin-noise-shader" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span>
-    <span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">PerlinNoiseShader</span><span class="o">.</span><span class="n">MakeFractalNoise</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="s1">'Shader'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">PerlinNoiseShader</span><span class="o">.</span><span class="n">MakeFractalNoise</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -370,7 +371,7 @@ gradient.</p>
 <section id="turbulence-perlin-noise-shader">
 <h3>Turbulence Perlin Noise Shader<a class="headerlink" href="#turbulence-perlin-noise-shader" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span>
-    <span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">PerlinNoiseShader</span><span class="o">.</span><span class="n">MakeTurbulence</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="s1">'Shader'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">PerlinNoiseShader</span><span class="o">.</span><span class="n">MakeTurbulence</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -382,7 +383,7 @@ gradient.</p>
     <span class="n">skia</span><span class="o">.</span><span class="n">BlendMode</span><span class="o">.</span><span class="n">kDifference</span><span class="p">,</span>
     <span class="n">skia</span><span class="o">.</span><span class="n">GradientShader</span><span class="o">.</span><span class="n">MakeRadial</span><span class="p">((</span><span class="mf">128.0</span><span class="p">,</span> <span class="mf">128.0</span><span class="p">),</span> <span class="mf">180.0</span><span class="p">,</span> <span class="p">[</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorBLUE</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">ColorYELLOW</span><span class="p">]),</span>
     <span class="n">skia</span><span class="o">.</span><span class="n">PerlinNoiseShader</span><span class="o">.</span><span class="n">MakeTurbulence</span><span class="p">(</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span><span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">shader</span><span class="p">})</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span><span class="s1">'Shader'</span><span class="p">:</span> <span class="n">shader</span><span class="p">})</span>
 </pre></div>
 </div>
 <img alt="Compose Shader" src="../_images/paint-compose-shader.png" />
@@ -397,7 +398,7 @@ gradient.</p>
 <span class="n">paint</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span>
     <span class="n">ImageFilter</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">ImageFilters</span><span class="o">.</span><span class="n">DropShadow</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">ColorBLACK</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">&quot;Skia&quot;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
+<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">"Skia"</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawTextBlob</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -409,7 +410,7 @@ gradient.</p>
 <span class="n">paint</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span>
     <span class="n">ImageFilter</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">ImageFilters</span><span class="o">.</span><span class="n">Dilate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">&quot;Skia&quot;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
+<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">"Skia"</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawTextBlob</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -421,7 +422,7 @@ gradient.</p>
 <span class="n">paint</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span>
     <span class="n">ImageFilter</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">ImageFilters</span><span class="o">.</span><span class="n">Erode</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">&quot;Skia&quot;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
+<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">"Skia"</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawTextBlob</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -436,7 +437,7 @@ gradient.</p>
 <span class="n">paint</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span>
     <span class="n">MaskFilter</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">MaskFilter</span><span class="o">.</span><span class="n">MakeBlur</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">kNormal_BlurStyle</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
 <span class="p">)</span>
-<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">&quot;Skia&quot;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
+<span class="n">blob</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s2">"Skia"</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">120</span><span class="p">))</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">drawTextBlob</span><span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -449,7 +450,7 @@ gradient.</p>
 <h3>Color Matrix Color Filter<a class="headerlink" href="#color-matrix-color-filter" title="Link to this heading"></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">MakeFromEncoded</span><span class="p">(</span>
     <span class="n">skia</span><span class="o">.</span><span class="n">Data</span><span class="o">.</span><span class="n">MakeFromFileName</span><span class="p">(</span>
-        <span class="s1">&#39;../skia/resources/images/mandrill_512_q075.jpg&#39;</span><span class="p">))</span>
+        <span class="s1">'../skia/resources/images/mandrill_512_q075.jpg'</span><span class="p">))</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">colorMatrix</span><span class="p">):</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span>
@@ -664,7 +665,7 @@ outer pathEffect (i.e. outer(inner(path))).</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="path.html" class="btn btn-neutral float-left" title="Path Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../development.html" class="btn btn-neutral float-right" title="Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="paragraph.html" class="btn btn-neutral float-right" title="Paragraph Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

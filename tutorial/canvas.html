@@ -57,6 +57,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="path.html">Path Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paint.html">Paint Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paragraph.html">Paragraph Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#notebook-examples">Notebook examples</a></li>
 </ul>
 </li>
@@ -118,7 +119,7 @@ into which the canvas commands are drawn.</p>
     <span class="n">canvas</span><span class="o">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span><span class="n">Color</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorGREEN</span><span class="p">))</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">makeImageSnapshot</span><span class="p">()</span>
-<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;output.png&#39;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
+<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'output.png'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Alternatively, we could have specified the memory for the surface explicitly,
@@ -163,16 +164,16 @@ Skia calls are made.</p>
 <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">glfw_context</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">glfw</span><span class="o">.</span><span class="n">init</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;glfw.init() failed&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'glfw.init() failed'</span><span class="p">)</span>
     <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">VISIBLE</span><span class="p">,</span> <span class="n">glfw</span><span class="o">.</span><span class="n">FALSE</span><span class="p">)</span>
     <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">STENCIL_BITS</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
     <span class="c1"># see https://www.glfw.org/faq#macos</span>
-    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;darwin&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"darwin"</span><span class="p">):</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">CONTEXT_VERSION_MAJOR</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">CONTEXT_VERSION_MINOR</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">OPENGL_FORWARD_COMPAT</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">OPENGL_PROFILE</span><span class="p">,</span> <span class="n">glfw</span><span class="o">.</span><span class="n">OPENGL_CORE_PROFILE</span><span class="p">)</span>
-    <span class="n">window</span> <span class="o">=</span> <span class="n">glfw</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">glfw</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">glfw</span><span class="o">.</span><span class="n">make_context_current</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
     <span class="k">yield</span> <span class="n">window</span>
     <span class="n">glfw</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
@@ -190,7 +191,7 @@ Skia calls are made.</p>
 
     <span class="n">image</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">makeImageSnapshot</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;output.png&#39;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'output.png'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -216,15 +217,15 @@ to it.</p></li>
 <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">glfw_window</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">glfw</span><span class="o">.</span><span class="n">init</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;glfw.init() failed&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'glfw.init() failed'</span><span class="p">)</span>
     <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">STENCIL_BITS</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
     <span class="c1"># see https://www.glfw.org/faq#macos</span>
-    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;darwin&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"darwin"</span><span class="p">):</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">CONTEXT_VERSION_MAJOR</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">CONTEXT_VERSION_MINOR</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">OPENGL_FORWARD_COMPAT</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="n">glfw</span><span class="o">.</span><span class="n">window_hint</span><span class="p">(</span><span class="n">glfw</span><span class="o">.</span><span class="n">OPENGL_PROFILE</span><span class="p">,</span> <span class="n">glfw</span><span class="o">.</span><span class="n">OPENGL_CORE_PROFILE</span><span class="p">)</span>
-    <span class="n">window</span> <span class="o">=</span> <span class="n">glfw</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">glfw</span><span class="o">.</span><span class="n">create_window</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">glfw</span><span class="o">.</span><span class="n">make_context_current</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
     <span class="k">yield</span> <span class="n">window</span>
     <span class="n">glfw</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
@@ -269,7 +270,7 @@ following demonstrates how to write a single-page PDF document to a file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">skia</span>
 
 <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span>
-<span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">&#39;output.pdf&#39;</span><span class="p">)</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">'output.pdf'</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">skia</span><span class="o">.</span><span class="n">PDF</span><span class="o">.</span><span class="n">MakeDocument</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span> <span class="k">as</span> <span class="n">document</span><span class="p">:</span>
     <span class="k">with</span> <span class="n">document</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="k">as</span> <span class="n">canvas</span><span class="p">:</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">drawCircle</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span><span class="n">Color</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorGREEN</span><span class="p">))</span>
@@ -301,7 +302,7 @@ instead of <a class="reference internal" href="../reference/skia.Surface.html#sk
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">skia</span>
 
 <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span>
-<span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">&#39;output.svg&#39;</span><span class="p">)</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">'output.svg'</span><span class="p">)</span>
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">SVGCanvas</span><span class="o">.</span><span class="n">Make</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="n">stream</span><span class="p">)</span>
 <span class="n">draw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
 <span class="k">del</span> <span class="n">canvas</span>

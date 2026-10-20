@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paragraph Overview &mdash; skia-python 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Development" href="../development.html" />
+    <link rel="prev" title="Paint Overview" href="paint.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            skia-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">Canvas Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="path.html">Path Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paint.html">Paint Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Paragraph Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#laying-out-a-paragraph">Laying out a paragraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mixing-styles">Mixing styles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line-height">Line height</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-strut">The strut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shifting-text-off-the-baseline">Shifting text off the baseline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#measuring-the-result">Measuring the result</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#notebook-examples">Notebook examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">skia-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Tutorial</a></li>
+      <li class="breadcrumb-item active">Paragraph Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorial/paragraph.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="paragraph-overview">
+<h1>Paragraph Overview<a class="headerlink" href="#paragraph-overview" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../reference/skia.Canvas.html#skia.Canvas.drawTextBlob" title="skia.Canvas.drawTextBlob"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Canvas.drawTextBlob()</span></code></a> draws a single run of text on one line. When text has
+to wrap to a width, or mix styles within a block, use the <code class="docutils literal notranslate"><span class="pre">textlayout</span></code> module, which
+shapes, breaks and positions the lines for you.</p>
+<section id="laying-out-a-paragraph">
+<h2>Laying out a paragraph<a class="headerlink" href="#laying-out-a-paragraph" title="Link to this heading"></a></h2>
+<p>Four objects are involved. A <a class="reference internal" href="../reference/skia.textlayout_FontCollection.html#skia.textlayout_FontCollection" title="skia.textlayout_FontCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">FontCollection</span></code></a>
+resolves font families, a <a class="reference internal" href="../reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextStyle</span></code></a> describes how a
+run of characters looks, a <a class="reference internal" href="../reference/skia.textlayout_ParagraphStyle.html#skia.textlayout_ParagraphStyle" title="skia.textlayout_ParagraphStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphStyle</span></code></a>
+carries settings for the block as a whole, and a
+<a class="reference internal" href="../reference/skia.textlayout_ParagraphBuilder.html#skia.textlayout_ParagraphBuilder" title="skia.textlayout_ParagraphBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphBuilder</span></code></a> collects text and produces
+the paragraph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">skia</span>
+
+<span class="n">font_collection</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">FontCollection</span><span class="p">()</span>
+<span class="n">font_collection</span><span class="o">.</span><span class="n">setDefaultFontManager</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">FontMgr</span><span class="p">())</span>
+
+<span class="n">text_style</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">TextStyle</span><span class="p">()</span>
+<span class="n">text_style</span><span class="o">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mf">24.0</span><span class="p">)</span>
+<span class="n">text_style</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorBLACK</span><span class="p">)</span>
+
+<span class="n">paragraph_style</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphStyle</span><span class="p">()</span>
+<span class="n">paragraph_style</span><span class="o">.</span><span class="n">setTextStyle</span><span class="p">(</span><span class="n">text_style</span><span class="p">)</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphBuilder</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+    <span class="n">paragraph_style</span><span class="p">,</span> <span class="n">font_collection</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Unicodes</span><span class="o">.</span><span class="n">ICU</span><span class="o">.</span><span class="n">Make</span><span class="p">())</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"Skia wraps this text to the width you lay it out at."</span><span class="p">)</span>
+<span class="n">paragraph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">Build</span><span class="p">()</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">layout</span><span class="p">(</span><span class="mf">300.0</span><span class="p">)</span>
+
+<span class="n">surface</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="mi">340</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">surface</span> <span class="k">as</span> <span class="n">canvas</span><span class="p">:</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorWHITE</span><span class="p">)</span>
+    <span class="n">paragraph</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+<span class="n">surface</span><span class="o">.</span><span class="n">makeImageSnapshot</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'output.png'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A paragraph wrapped to 300 pixels" src="../_images/paragraph-1.png" />
+<p>The paragraph does nothing until <code class="docutils literal notranslate"><span class="pre">layout()</span></code> is called, which is what breaks the text
+into lines. Call it before painting the paragraph or reading any of its metrics, and
+again whenever the width changes.</p>
+</section>
+<section id="mixing-styles">
+<h2>Mixing styles<a class="headerlink" href="#mixing-styles" title="Link to this heading"></a></h2>
+<p>The builder keeps a stack of text styles. Text added after <code class="docutils literal notranslate"><span class="pre">pushStyle()</span></code> uses the
+style on top of the stack, and <code class="docutils literal notranslate"><span class="pre">pop()</span></code> returns to the one beneath it, so a single
+paragraph can mix styles and still wrap as one block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plain</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">TextStyle</span><span class="p">()</span>
+<span class="n">plain</span><span class="o">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mf">24.0</span><span class="p">)</span>
+<span class="n">plain</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorBLACK</span><span class="p">)</span>
+
+<span class="n">accent</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">TextStyle</span><span class="p">()</span>
+<span class="n">accent</span><span class="o">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mf">24.0</span><span class="p">)</span>
+<span class="n">accent</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorRED</span><span class="p">)</span>
+<span class="n">accent</span><span class="o">.</span><span class="n">setFontStyle</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">FontStyle</span><span class="o">.</span><span class="n">Bold</span><span class="p">())</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphBuilder</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+    <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphStyle</span><span class="p">(),</span> <span class="n">font_collection</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Unicodes</span><span class="o">.</span><span class="n">ICU</span><span class="o">.</span><span class="n">Make</span><span class="p">())</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">pushStyle</span><span class="p">(</span><span class="n">plain</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"One paragraph can mix "</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">pushStyle</span><span class="p">(</span><span class="n">accent</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"several styles"</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">pushStyle</span><span class="p">(</span><span class="n">plain</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">", and still wraps as one block of text."</span><span class="p">)</span>
+<span class="n">paragraph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">Build</span><span class="p">()</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">layout</span><span class="p">(</span><span class="mf">300.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="One paragraph mixing a plain and a bold red style" src="../_images/paragraph-2.png" />
+</section>
+<section id="line-height">
+<h2>Line height<a class="headerlink" href="#line-height" title="Link to this heading"></a></h2>
+<p>By default each line is as tall as the font says it should be. To set the line height
+yourself, pass a multiple of the font size to <code class="docutils literal notranslate"><span class="pre">TextStyle.setHeight()</span></code> and enable it
+with <code class="docutils literal notranslate"><span class="pre">TextStyle.setHeightOverride()</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">laid_out</span><span class="p">(</span><span class="n">height_override</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">TextStyle</span><span class="p">()</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mf">20.0</span><span class="p">)</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorBLACK</span><span class="p">)</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">setHeightOverride</span><span class="p">(</span><span class="n">height_override</span><span class="p">)</span>
+    <span class="n">style</span><span class="o">.</span><span class="n">setHeight</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+
+    <span class="n">paragraph_style</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphStyle</span><span class="p">()</span>
+    <span class="n">paragraph_style</span><span class="o">.</span><span class="n">setTextStyle</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphBuilder</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+        <span class="n">paragraph_style</span><span class="p">,</span> <span class="n">font_collection</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Unicodes</span><span class="o">.</span><span class="n">ICU</span><span class="o">.</span><span class="n">Make</span><span class="p">())</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"Line height controls how far apart the lines sit."</span><span class="p">)</span>
+    <span class="n">paragraph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">Build</span><span class="p">()</span>
+    <span class="n">paragraph</span><span class="o">.</span><span class="n">layout</span><span class="p">(</span><span class="mf">180.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">paragraph</span>
+
+<span class="n">natural</span> <span class="o">=</span> <span class="n">laid_out</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>   <span class="c1"># setHeight ignored (the override is off)</span>
+<span class="n">tight</span>   <span class="o">=</span> <span class="n">laid_out</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>    <span class="c1"># exactly one font size per line</span>
+<span class="n">loose</span>   <span class="o">=</span> <span class="n">laid_out</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>    <span class="c1"># two font sizes per line</span>
+
+<span class="n">surface</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="mi">620</span><span class="p">,</span> <span class="mi">190</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">surface</span> <span class="k">as</span> <span class="n">canvas</span><span class="p">:</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorWHITE</span><span class="p">)</span>
+    <span class="n">natural</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+    <span class="n">tight</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mf">220.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+    <span class="n">loose</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mf">420.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="The same text at the font's natural line height, and at 1.0 and 2.0" src="../_images/paragraph-3.png" />
+<p>Left to right, the font’s own line height, then <code class="docutils literal notranslate"><span class="pre">TextStyle.setHeight(1.0)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">TextStyle.setHeight(2.0)</span></code>. With the override on, the pitch is exactly the multiple of
+the font size (20 and 40 pixels a line here) rather than whatever the font asks for,
+which for this font is 29.</p>
+<p>Note the first of the three. <code class="docutils literal notranslate"><span class="pre">TextStyle.setHeight()</span></code> on its own does nothing. Without
+<code class="docutils literal notranslate"><span class="pre">TextStyle.setHeightOverride(True)</span></code> the value is stored and ignored, and the paragraph
+comes out at the font’s natural height.</p>
+<p>Where the extra space goes is a second choice. By default Skia scales the font’s ascent
+and descent by the multiple. <code class="docutils literal notranslate"><span class="pre">TextStyle.setHalfLeading(True)</span></code> splits the difference
+evenly above and below the text instead, which leaves the line box the same height and
+moves only the text inside it. At a multiple of 1.0 with a 20 pixel font:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TextStyle</span><span class="o">.</span><span class="n">setHalfLeading</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>    <span class="n">Height</span> <span class="mf">20.0</span>    <span class="n">baseline</span> <span class="mf">16.02</span>
+<span class="n">TextStyle</span><span class="o">.</span><span class="n">setHalfLeading</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>     <span class="n">Height</span> <span class="mf">20.0</span>    <span class="n">baseline</span> <span class="mf">18.72</span>
+</pre></div>
+</div>
+<p>The two coincide when the requested height matches the font’s own line height, since
+then there is no extra space to place. The numbers above come from a font whose natural
+line height is 29 pixels at this size. A font that is exactly one em tall, as Helvetica
+is, gives the same baseline either way.</p>
+<p>Skia caches shaped runs on the <a class="reference internal" href="../reference/skia.textlayout_FontCollection.html#skia.textlayout_FontCollection" title="skia.textlayout_FontCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">FontCollection</span></code></a>,
+and the cache is not keyed on half leading, so laying the same text out twice through one
+collection gives the first result both times and the setting looks inert. Give each
+paragraph its own collection when comparing the two.</p>
+</section>
+<section id="the-strut">
+<h2>The strut<a class="headerlink" href="#the-strut" title="Link to this heading"></a></h2>
+<p>The line height from <code class="docutils literal notranslate"><span class="pre">TextStyle.setHeight()</span></code> is relative. Each run is measured against
+its own font size, so a paragraph mixing 12 and 36 point text still comes out with lines
+of different heights. The strut is the absolute version of the same idea. It gives every
+line a minimum height taken from a font of its own, so the lines keep a common rhythm
+whatever they contain.</p>
+<p>The name is borrowed from typesetting, where a strut is an invisible box of zero width
+with a fixed height and depth that is dropped into a line to hold it open. Skia’s strut
+behaves the same way, as though a zero width character in a font of its own sat at the
+start of every line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">graf</span><span class="p">(</span><span class="n">strut_height</span><span class="p">):</span>
+    <span class="n">paragraph_style</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphStyle</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">strut_height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">strut</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">StrutStyle</span><span class="p">()</span>
+        <span class="n">strut</span><span class="o">.</span><span class="n">setStrutEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">strut</span><span class="o">.</span><span class="n">setHeightOverride</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">strut</span><span class="o">.</span><span class="n">setHeight</span><span class="p">(</span><span class="n">strut_height</span><span class="p">)</span>
+        <span class="n">paragraph_style</span><span class="o">.</span><span class="n">setStrutStyle</span><span class="p">(</span><span class="n">strut</span><span class="p">)</span>
+
+    <span class="n">small</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">TextStyle</span><span class="p">()</span>
+    <span class="n">small</span><span class="o">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mf">12.0</span><span class="p">)</span>
+    <span class="n">large</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">TextStyle</span><span class="p">()</span>
+    <span class="n">large</span><span class="o">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mf">36.0</span><span class="p">)</span>
+
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphBuilder</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+        <span class="n">paragraph_style</span><span class="p">,</span> <span class="n">font_collection</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Unicodes</span><span class="o">.</span><span class="n">ICU</span><span class="o">.</span><span class="n">Make</span><span class="p">())</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">pushStyle</span><span class="p">(</span><span class="n">small</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"small line</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">pushStyle</span><span class="p">(</span><span class="n">large</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"LARGE line"</span><span class="p">)</span>
+    <span class="n">paragraph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">Build</span><span class="p">()</span>
+    <span class="n">paragraph</span><span class="o">.</span><span class="n">layout</span><span class="p">(</span><span class="mf">400.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">paragraph</span>
+
+<span class="n">surface</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="mi">660</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">surface</span> <span class="k">as</span> <span class="n">canvas</span><span class="p">:</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorWHITE</span><span class="p">)</span>
+    <span class="n">graf</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+    <span class="n">graf</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mf">340.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">graf</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">Height</span>
+<span class="mf">69.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">graf</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span><span class="o">.</span><span class="n">Height</span>
+<span class="mf">112.0</span>
+</pre></div>
+</div>
+<img alt="The same two lines without a strut and under a strut of 4.0" src="../_images/paragraph-4.png" />
+<p>Left, the two lines are 17 and 52 pixels tall. Right, under a strut of 4.0 they are 56
+each. Every line comes out at the taller of its own height and the strut’s, so the strut
+is a floor rather than a setting, and <code class="docutils literal notranslate"><span class="pre">StrutStyle.setForceStrutHeight()</span></code> is what makes
+it an exact height instead.</p>
+<p>The multiple given to <code class="docutils literal notranslate"><span class="pre">StrutStyle.setHeight()</span></code> applies to the strut’s own font size
+rather than to the text’s. That size is 14 unless <code class="docutils literal notranslate"><span class="pre">StrutStyle.setFontSize()</span></code> changes
+it, which is how 4.0 becomes the 56 pixels above.</p>
+<p>One thing to know before turning the strut on. The minimum applies at once, so text
+smaller than the strut grows to meet it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="n">size</span>    <span class="n">strut</span> <span class="n">off</span>    <span class="n">strut</span> <span class="n">on</span>
+  <span class="mi">6</span> <span class="n">pt</span>            <span class="mf">9.00</span>       <span class="mf">20.00</span>
+  <span class="mi">8</span> <span class="n">pt</span>           <span class="mf">12.00</span>       <span class="mf">20.00</span>
+ <span class="mi">12</span> <span class="n">pt</span>           <span class="mf">17.00</span>       <span class="mf">20.00</span>
+ <span class="mi">20</span> <span class="n">pt</span>           <span class="mf">29.00</span>       <span class="mf">29.00</span>
+</pre></div>
+</div>
+<p>Six point text ends up more than twice as tall as it asked for. Since the strut has to
+be enabled to reach <code class="docutils literal notranslate"><span class="pre">StrutStyle.setLeading()</span></code> at all, this catches people who wanted
+the leading and not the floor. Setting <code class="docutils literal notranslate"><span class="pre">StrutStyle.setHeight()</span></code> low, with
+<code class="docutils literal notranslate"><span class="pre">StrutStyle.setHeightOverride(True)</span></code>, puts the floor back under the text and out of
+the way.</p>
+</section>
+<section id="shifting-text-off-the-baseline">
+<h2>Shifting text off the baseline<a class="headerlink" href="#shifting-text-off-the-baseline" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TextStyle.setBaselineShift()</span></code> moves one run off the baseline the rest of the line
+sits on, which is how superscripts and subscripts are made. Positive values move the
+text <strong>down</strong>, so a superscript takes a negative shift. The line box grows to keep the
+shifted text inside it, whichever way it goes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shifted</span><span class="p">(</span><span class="n">shift</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">style</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">TextStyle</span><span class="p">()</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">setFontSize</span><span class="p">(</span><span class="mf">28.0</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorBLACK</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">setBaselineShift</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphBuilder</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+        <span class="n">skia</span><span class="o">.</span><span class="n">textlayout</span><span class="o">.</span><span class="n">ParagraphStyle</span><span class="p">(),</span> <span class="n">font_collection</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Unicodes</span><span class="o">.</span><span class="n">ICU</span><span class="o">.</span><span class="n">Make</span><span class="p">())</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">pushStyle</span><span class="p">(</span><span class="n">style</span><span class="p">(</span><span class="mf">0.0</span><span class="p">))</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"Base"</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">pushStyle</span><span class="p">(</span><span class="n">style</span><span class="p">(</span><span class="n">shift</span><span class="p">))</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">addText</span><span class="p">(</span><span class="s2">"X"</span><span class="p">)</span>
+    <span class="n">paragraph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">Build</span><span class="p">()</span>
+    <span class="n">paragraph</span><span class="o">.</span><span class="n">layout</span><span class="p">(</span><span class="mf">300.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">paragraph</span>
+
+<span class="n">surface</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="mi">620</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">surface</span> <span class="k">as</span> <span class="n">canvas</span><span class="p">:</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorWHITE</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">shift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">((</span><span class="o">-</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">)):</span>
+        <span class="n">shifted</span><span class="p">(</span><span class="n">shift</span><span class="p">)</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mf">20.0</span> <span class="o">+</span> <span class="n">index</span> <span class="o">*</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="One run shifted up, level with the baseline, and shifted down" src="../_images/paragraph-5.png" />
+<p>Left to right, a shift of -12, 0 and +12 on the final character. The block grows by the
+same amount either way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shift</span>  <span class="o">-</span><span class="mf">12.0</span>    <span class="n">Height</span> <span class="mf">53.0</span>
+<span class="n">shift</span>    <span class="mf">0.0</span>    <span class="n">Height</span> <span class="mf">41.0</span>
+<span class="n">shift</span>  <span class="o">+</span><span class="mf">12.0</span>    <span class="n">Height</span> <span class="mf">53.0</span>
+</pre></div>
+</div>
+</section>
+<section id="measuring-the-result">
+<h2>Measuring the result<a class="headerlink" href="#measuring-the-result" title="Link to this heading"></a></h2>
+<p>After <code class="docutils literal notranslate"><span class="pre">layout()</span></code>, the paragraph reports what it produced. Laying out the line height
+example again at a multiple of 1.5:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">laid_out</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">Width</span>
+<span class="go">180.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">LongestLine</span>
+<span class="go">166.09979248046875</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">MinIntrinsicWidth</span>
+<span class="go">76.30000305175781</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">MaxIntrinsicWidth</span>
+<span class="go">429.44000244140625</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">Height</span>
+<span class="go">90.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">ExceedMaxLines</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Width</span></code> is the width you passed to <code class="docutils literal notranslate"><span class="pre">layout()</span></code>, not the width of the text, and
+<code class="docutils literal notranslate"><span class="pre">LongestLine</span></code> is how wide the text actually came out. The two intrinsic widths are the
+bounds the text could take, the narrowest width that never has to break a word and the
+width the whole text would need on one line.</p>
+<p>Treat those as bounds rather than as widths to lay out at. The comparison in <code class="docutils literal notranslate"><span class="pre">layout()</span></code>
+is strict, so laying out at exactly <code class="docutils literal notranslate"><span class="pre">MaxIntrinsicWidth</span></code> still wraps, and a single line
+needs a fraction more than that. The same paragraph can be laid out again at any width
+and the metrics follow, which is enough to fit text to a box by width. Fitting by font
+size needs a new paragraph each time, because the text style is fixed once <code class="docutils literal notranslate"><span class="pre">Build()</span></code>
+is called.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="paint.html" class="btn btn-neutral float-left" title="Paint Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../development.html" class="btn btn-neutral float-right" title="Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Kota Yamaguchi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

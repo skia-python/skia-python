@@ -6,11 +6,11 @@ skia-python
 Skia is an open source 2D graphics library which provides common APIs that work
 across a variety of hardware and software platforms.
 
-`skia-python` development happens at `Github`_.
+`skia-python` development happens at `GitHub`_.
 
 .. _Skia Graphics Library: https://skia.org/
 
-.. _Github: https://github.com/skia-python/skia-python
+.. _GitHub: https://github.com/skia-python/skia-python
 
 
 Documentation

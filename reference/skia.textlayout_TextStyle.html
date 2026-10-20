@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontScanner.html">FontScanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
@@ -296,37 +297,49 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.cloneForPlaceholder" title="skia.textlayout_TextStyle.cloneForPlaceholder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cloneForPlaceholder</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setColor" title="skia.textlayout_TextStyle.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setBaselineShift" title="skia.textlayout_TextStyle.setBaselineShift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBaselineShift</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecoration" title="skia.textlayout_TextStyle.setDecoration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecoration</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setColor" title="skia.textlayout_TextStyle.setColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setColor</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationColor" title="skia.textlayout_TextStyle.setDecorationColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationColor</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecoration" title="skia.textlayout_TextStyle.setDecoration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecoration</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationMode" title="skia.textlayout_TextStyle.setDecorationMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationMode</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationColor" title="skia.textlayout_TextStyle.setDecorationColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationColor</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationStyle" title="skia.textlayout_TextStyle.setDecorationStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationMode" title="skia.textlayout_TextStyle.setDecorationMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationMode</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationThicknessMultiplier" title="skia.textlayout_TextStyle.setDecorationThicknessMultiplier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationThicknessMultiplier</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationStyle" title="skia.textlayout_TextStyle.setDecorationStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationStyle</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setFontFamilies" title="skia.textlayout_TextStyle.setFontFamilies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontFamilies</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setDecorationThicknessMultiplier" title="skia.textlayout_TextStyle.setDecorationThicknessMultiplier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setDecorationThicknessMultiplier</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setFontSize" title="skia.textlayout_TextStyle.setFontSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontSize</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setFontFamilies" title="skia.textlayout_TextStyle.setFontFamilies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontFamilies</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setFontStyle" title="skia.textlayout_TextStyle.setFontStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontStyle</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setFontSize" title="skia.textlayout_TextStyle.setFontSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontSize</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setForegroundColor" title="skia.textlayout_TextStyle.setForegroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForegroundColor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setFontStyle" title="skia.textlayout_TextStyle.setFontStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontStyle</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setForegroundColor" title="skia.textlayout_TextStyle.setForegroundColor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForegroundColor</span></code></a></p></td>
 <td><p>DEPRECATED: prefer <cite>setForegroundPaint</cite></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setForegroundPaint" title="skia.textlayout_TextStyle.setForegroundPaint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForegroundPaint</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setForegroundPaint" title="skia.textlayout_TextStyle.setForegroundPaint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForegroundPaint</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setHalfLeading" title="skia.textlayout_TextStyle.setHalfLeading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHalfLeading</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setHeight" title="skia.textlayout_TextStyle.setHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHeight</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setHeightOverride" title="skia.textlayout_TextStyle.setHeightOverride"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHeightOverride</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_TextStyle.setLetterSpacing" title="skia.textlayout_TextStyle.setLetterSpacing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLetterSpacing</span></code></a></p></td>
@@ -352,6 +365,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="skia.textlayout_TextStyle.cloneForPlaceholder">
 <span class="sig-prename descclassname"><span class="pre">textlayout_TextStyle.</span></span><span class="sig-name descname"><span class="pre">cloneForPlaceholder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><span class="pre">skia.textlayout_TextStyle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><span class="pre">skia.textlayout_TextStyle</span></a></span></span><a class="headerlink" href="#skia.textlayout_TextStyle.cloneForPlaceholder" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_TextStyle.setBaselineShift">
+<span class="sig-prename descclassname"><span class="pre">textlayout_TextStyle.</span></span><span class="sig-name descname"><span class="pre">setBaselineShift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><span class="pre">skia.textlayout_TextStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">baselineshift</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsFloat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_TextStyle.setBaselineShift" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -408,6 +426,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="skia.textlayout_TextStyle.setForegroundPaint">
 <span class="sig-prename descclassname"><span class="pre">textlayout_TextStyle.</span></span><span class="sig-name descname"><span class="pre">setForegroundPaint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><span class="pre">skia.textlayout_TextStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">paint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="skia.Paint.html#skia.Paint" title="skia.Paint"><span class="pre">skia.Paint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_TextStyle.setForegroundPaint" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_TextStyle.setHalfLeading">
+<span class="sig-prename descclassname"><span class="pre">textlayout_TextStyle.</span></span><span class="sig-name descname"><span class="pre">setHalfLeading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><span class="pre">skia.textlayout_TextStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">halfleading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_TextStyle.setHalfLeading" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_TextStyle.setHeight">
+<span class="sig-prename descclassname"><span class="pre">textlayout_TextStyle.</span></span><span class="sig-name descname"><span class="pre">setHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><span class="pre">skia.textlayout_TextStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsFloat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_TextStyle.setHeight" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_TextStyle.setHeightOverride">
+<span class="sig-prename descclassname"><span class="pre">textlayout_TextStyle.</span></span><span class="sig-name descname"><span class="pre">setHeightOverride</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_TextStyle" title="skia.textlayout_TextStyle"><span class="pre">skia.textlayout_TextStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">heightoverride</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_TextStyle.setHeightOverride" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

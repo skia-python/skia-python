@@ -103,6 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontScanner.html">FontScanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
@@ -1103,6 +1104,13 @@ true, draw a wedge that includes lines from oval center to arc end
 points. If useCenter is false, draw arc between end points.</p>
 <p>If <a class="reference internal" href="skia.Rect.html#skia.Rect" title="skia.Rect"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rect</span></code></a> oval is empty or sweepAngle is zero, nothing is
 drawn.</p>
+<p>NOTE: <cite>oval</cite> should be normalized, so that <cite>oval.fLeft</cite> is less than <cite>oval.fRight</cite>
+and <cite>oval.fTop</cite> is less than <cite>oval.fBottom</cite>. If unsure, call its <cite>makeSorted()</cite> method.
+This method differs from <cite>drawOval</cite>, which does not requires such
+preprocessing. Upstream <cite>drawOval</cite> calls <cite>makeSorted()</cite> internally,
+but upstream <cite>drawArc</cite> does not; this difference is likely to avoid
+ambiguity in interpreting <cite>startAngle</cite> and <cite>sweepAngle</cite> in various backends,
+where drawing direction matters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

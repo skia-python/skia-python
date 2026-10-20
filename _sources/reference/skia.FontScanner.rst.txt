@@ -1,0 +1,51 @@
+FontScanner
+===========
+
+
+
+.. currentmodule:: skia
+
+.. autoclass:: skia.FontScanner
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :nosignatures:
+   
+      ~skia.FontScanner.MakeFromData
+      ~skia.FontScanner.__init__
+      ~skia.FontScanner.scanFace
+      ~skia.FontScanner.scanFile
+   
+   
+
+   
+   
+   
+
+
+
+
+Methods
+-------
+
+
+
+.. automethod:: skia.FontScanner.MakeFromData
+
+.. automethod:: skia.FontScanner.__init__
+
+.. automethod:: skia.FontScanner.scanFace
+
+.. automethod:: skia.FontScanner.scanFile
+
+
+
+
+

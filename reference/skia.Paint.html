@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontScanner.html">FontScanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
@@ -311,8 +312,8 @@ dashing or blur, but contains the objects that do so.</p>
 </div>
 <p><a class="reference internal" href="#skia.Paint" title="skia.Paint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paint</span></code></a> is implicitly convertible from python dict. It is
 possible to replace <a class="reference internal" href="#skia.Paint" title="skia.Paint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paint</span></code></a> with <code class="docutils literal notranslate"><span class="pre">dict</span></code> where required:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span><span class="s1">&#39;Color&#39;</span><span class="p">:</span> <span class="mh">0xFFFFFFFF</span><span class="p">})</span>
-<span class="n">canvas</span><span class="o">.</span><span class="n">drawLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;Color&#39;</span><span class="p">:</span> <span class="mh">0xFF0000FF</span><span class="p">})</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span><span class="o">.</span><span class="n">drawPaint</span><span class="p">({</span><span class="s1">'Color'</span><span class="p">:</span> <span class="mh">0xFFFFFFFF</span><span class="p">})</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">drawLine</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">{</span><span class="s1">'Color'</span><span class="p">:</span> <span class="mh">0xFF0000FF</span><span class="p">})</span>
 </pre></div>
 </div>
 <p class="rubric">Classes</p>
@@ -617,23 +618,23 @@ methods for required signatures.</p>
 <blockquote>
 <div><p>Constructs <a class="reference internal" href="#skia.Paint" title="skia.Paint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paint</span></code></a> from python dict:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;Alpha&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
-    <span class="s1">&#39;Alphaf&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
-    <span class="s1">&#39;AntiAlias&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s1">&#39;Color&#39;</span><span class="p">:</span> <span class="mh">0xFFFFFFFF</span><span class="p">,</span>
-    <span class="s1">&#39;Color4f&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Color4f</span><span class="o">.</span><span class="n">FromColor</span><span class="p">(</span><span class="mh">0xFF00FF00</span><span class="p">),</span>
-    <span class="s1">&#39;ColorFilter&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">LumaColorFilter</span><span class="o">.</span><span class="n">Make</span><span class="p">(),</span>
-    <span class="s1">&#39;Dither&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s1">&#39;FilterQuality&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">kMedium_FilterQuality</span><span class="p">,</span>
-    <span class="s1">&#39;ImageFilter&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">ImageFilters</span><span class="o">.</span><span class="n">Blur</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-    <span class="s1">&#39;MaskFilter&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">MaskFilter</span><span class="o">.</span><span class="n">MakeBlur</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">kNormal_BlurStyle</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span>
-    <span class="s1">&#39;PathEffect&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">DashPathEffect</span><span class="o">.</span><span class="n">Make</span><span class="p">([</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="s1">&#39;Shader&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Shaders</span><span class="o">.</span><span class="n">Empty</span><span class="p">(),</span>
-    <span class="s1">&#39;StrokeCap&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="o">.</span><span class="n">kButt_Cap</span><span class="p">,</span>
-    <span class="s1">&#39;StrokeJoin&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="o">.</span><span class="n">kMiter_Join</span><span class="p">,</span>
-    <span class="s1">&#39;StrokeMiter&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s1">&#39;StrokeWidth&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s1">&#39;Style&#39;</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="o">.</span><span class="n">kStroke_Style</span><span class="p">,</span>
+    <span class="s1">'Alpha'</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="s1">'Alphaf'</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s1">'AntiAlias'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">'Color'</span><span class="p">:</span> <span class="mh">0xFFFFFFFF</span><span class="p">,</span>
+    <span class="s1">'Color4f'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Color4f</span><span class="o">.</span><span class="n">FromColor</span><span class="p">(</span><span class="mh">0xFF00FF00</span><span class="p">),</span>
+    <span class="s1">'ColorFilter'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">LumaColorFilter</span><span class="o">.</span><span class="n">Make</span><span class="p">(),</span>
+    <span class="s1">'Dither'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">'FilterQuality'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">kMedium_FilterQuality</span><span class="p">,</span>
+    <span class="s1">'ImageFilter'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">ImageFilters</span><span class="o">.</span><span class="n">Blur</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+    <span class="s1">'MaskFilter'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">MaskFilter</span><span class="o">.</span><span class="n">MakeBlur</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">kNormal_BlurStyle</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span>
+    <span class="s1">'PathEffect'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">DashPathEffect</span><span class="o">.</span><span class="n">Make</span><span class="p">([</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">'Shader'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Shaders</span><span class="o">.</span><span class="n">Empty</span><span class="p">(),</span>
+    <span class="s1">'StrokeCap'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="o">.</span><span class="n">kButt_Cap</span><span class="p">,</span>
+    <span class="s1">'StrokeJoin'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="o">.</span><span class="n">kMiter_Join</span><span class="p">,</span>
+    <span class="s1">'StrokeMiter'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">'StrokeWidth'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">'Style'</span><span class="p">:</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="o">.</span><span class="n">kStroke_Style</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">paint</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>

@@ -18,7 +18,34 @@ M44
    .. autosummary::
       :nosignatures:
    
+      ~skia.M44.ColMajor
+      ~skia.M44.Cols
+      ~skia.M44.LookAt
+      ~skia.M44.Perspective
+      ~skia.M44.RectToRect
+      ~skia.M44.Rotate
+      ~skia.M44.RowMajor
+      ~skia.M44.Rows
+      ~skia.M44.Scale
+      ~skia.M44.Translate
       ~skia.M44.__init__
+      ~skia.M44.asM33
+      ~skia.M44.isFinite
+      ~skia.M44.normalizePerspective
+      ~skia.M44.postConcat
+      ~skia.M44.postTranslate
+      ~skia.M44.preConcat
+      ~skia.M44.preScale
+      ~skia.M44.preTranslate
+      ~skia.M44.rc
+      ~skia.M44.setConcat
+      ~skia.M44.setIdentity
+      ~skia.M44.setRC
+      ~skia.M44.setRotate
+      ~skia.M44.setRotateUnit
+      ~skia.M44.setRotateUnitSinCos
+      ~skia.M44.setScale
+      ~skia.M44.setTranslate
    
    
 
@@ -34,7 +61,61 @@ Methods
 
 
 
+.. automethod:: skia.M44.ColMajor
+
+.. automethod:: skia.M44.Cols
+
+.. automethod:: skia.M44.LookAt
+
+.. automethod:: skia.M44.Perspective
+
+.. automethod:: skia.M44.RectToRect
+
+.. automethod:: skia.M44.Rotate
+
+.. automethod:: skia.M44.RowMajor
+
+.. automethod:: skia.M44.Rows
+
+.. automethod:: skia.M44.Scale
+
+.. automethod:: skia.M44.Translate
+
 .. automethod:: skia.M44.__init__
+
+.. automethod:: skia.M44.asM33
+
+.. automethod:: skia.M44.isFinite
+
+.. automethod:: skia.M44.normalizePerspective
+
+.. automethod:: skia.M44.postConcat
+
+.. automethod:: skia.M44.postTranslate
+
+.. automethod:: skia.M44.preConcat
+
+.. automethod:: skia.M44.preScale
+
+.. automethod:: skia.M44.preTranslate
+
+.. automethod:: skia.M44.rc
+
+.. automethod:: skia.M44.setConcat
+
+.. automethod:: skia.M44.setIdentity
+
+.. automethod:: skia.M44.setRC
+
+.. automethod:: skia.M44.setRotate
+
+.. automethod:: skia.M44.setRotateUnit
+
+.. automethod:: skia.M44.setRotateUnitSinCos
+
+.. automethod:: skia.M44.setScale
+
+.. automethod:: skia.M44.setTranslate
 
 
 

@@ -96,6 +96,7 @@
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontScanner.html">FontScanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
@@ -303,7 +304,7 @@
 <li><p>Close the document with doc.close().</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">skia-python</span></code> supports <code class="docutils literal notranslate"><span class="pre">with</span></code> syntax to build a document:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">&#39;output.pdf&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">FILEWStream</span><span class="p">(</span><span class="s1">'output.pdf'</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">skia</span><span class="o">.</span><span class="n">PDF</span><span class="o">.</span><span class="n">MakeDocument</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span> <span class="k">as</span> <span class="n">document</span><span class="p">:</span>
     <span class="k">with</span> <span class="n">document</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">)</span> <span class="k">as</span> <span class="n">canvas</span><span class="p">:</span>
         <span class="n">draw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>

@@ -242,6 +242,8 @@
 </li>
         <li><a href="reference/skia.FontParameters.html#skia.FontParameters.__init__">(FontParameters method)</a>
 </li>
+        <li><a href="reference/skia.FontScanner.html#skia.FontScanner.__init__">(FontScanner method)</a>
+</li>
         <li><a href="reference/skia.FontStyle.html#skia.FontStyle.__init__">(FontStyle method)</a>
 </li>
         <li><a href="reference/skia.FontStyleSet.html#skia.FontStyleSet.__init__">(FontStyleSet method)</a>
@@ -935,6 +937,8 @@
 </li>
       <li><a href="reference/skia.Image.html#skia.Image.asLegacyBitmap">asLegacyBitmap() (Image method)</a>
 </li>
+      <li><a href="reference/skia.M44.html#skia.M44.asM33">asM33() (M44 method)</a>
+</li>
       <li><a href="reference/skia.GrBackendFormat.html#skia.GrBackendFormat.asMockColorType">asMockColorType() (GrBackendFormat method)</a>
 </li>
       <li><a href="reference/skia.GrBackendFormat.html#skia.GrBackendFormat.asMockCompressionType">asMockCompressionType() (GrBackendFormat method)</a>
@@ -1411,6 +1415,8 @@
       </ul></li>
       <li><a href="reference/skia.Codec.html#skia.Codec">Codec (class in skia)</a>
 </li>
+      <li><a href="reference/skia.M44.html#skia.M44.ColMajor">ColMajor() (M44 static method)</a>
+</li>
       <li><a href="reference/skia.html#skia.Color">Color() (in module skia)</a>
 
       <ul>
@@ -1514,6 +1520,8 @@
 </li>
       </ul></li>
       <li><a href="reference/skia.html#skia.ColorTypeValidateAlphaType">ColorTypeValidateAlphaType() (in module skia)</a>
+</li>
+      <li><a href="reference/skia.M44.html#skia.M44.Cols">Cols() (M44 static method)</a>
 </li>
       <li><a href="reference/skia.ColorFilters.html#skia.ColorFilters.Compose">Compose() (ColorFilters static method)</a>
 
@@ -2337,10 +2345,10 @@
         <li><a href="reference/skia.Surfaces.html#skia.Surfaces.flushAndSubmit">(Surfaces method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.FontMetrics.html#skia.FontMetrics.fMaxCharWidth">fMaxCharWidth (FontMetrics attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.PDF.StructureElementNode.html#skia.PDF.StructureElementNode.fNodeId">fNodeId (StructureElementNode attribute)</a>
 </li>
       <li><a href="reference/skia.GrFlushInfo.html#skia.GrFlushInfo.fNumSemaphores">fNumSemaphores (GrFlushInfo attribute)</a>
@@ -2358,6 +2366,8 @@
       <li><a href="reference/skia.FontMgr.html#skia.FontMgr">FontMgr (class in skia)</a>
 </li>
       <li><a href="reference/skia.FontParameters.html#skia.FontParameters">FontParameters (class in skia)</a>
+</li>
+      <li><a href="reference/skia.FontScanner.html#skia.FontScanner">FontScanner (class in skia)</a>
 </li>
       <li><a href="reference/skia.FontStyle.html#skia.FontStyle">FontStyle (class in skia)</a>
 </li>
@@ -3489,9 +3499,11 @@
 </li>
       <li><a href="reference/skia.StrokeRec.html#skia.StrokeRec.isFillStyle">isFillStyle() (StrokeRec method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.isFinite">isFinite() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.isFinite">isFinite() (M44 method)</a>
 
       <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.isFinite">(Matrix method)</a>
+</li>
         <li><a href="reference/skia.Path.html#skia.Path.isFinite">(Path method)</a>
 </li>
         <li><a href="reference/skia.Point.html#skia.Point.isFinite">(Point method)</a>
@@ -5793,10 +5805,10 @@
 </li>
       <li><a href="reference/skia.Point3.html#skia.Point3.length">length() (Point3 method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.Point3.html#skia.Point3.Length">Length() (Point3 static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.ColorFilters.html#skia.ColorFilters.Lerp">Lerp() (ColorFilters static method)</a>
 
       <ul>
@@ -5818,6 +5830,8 @@
 </li>
       </ul></li>
       <li><a href="reference/skia.textlayout_Paragraph.html#skia.textlayout_Paragraph.LongestLine">LongestLine (textlayout_Paragraph attribute)</a>
+</li>
+      <li><a href="reference/skia.M44.html#skia.M44.LookAt">LookAt() (M44 static method)</a>
 </li>
       <li><a href="reference/skia.LumaColorFilter.html#skia.LumaColorFilter">LumaColorFilter (class in skia)</a>
 </li>
@@ -6023,8 +6037,12 @@
 </li>
       <li><a href="reference/skia.FontMgr.html#skia.FontMgr.makeFromData">makeFromData() (FontMgr method)</a>
 </li>
-      <li><a href="reference/skia.Picture.html#skia.Picture.MakeFromData">MakeFromData() (Picture static method)</a>
+      <li><a href="reference/skia.FontScanner.html#skia.FontScanner.MakeFromData">MakeFromData() (FontScanner method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Picture.html#skia.Picture.MakeFromData">(Picture static method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.textlayout_TypefaceFontProvider.html#skia.textlayout_TypefaceFontProvider.makeFromData">makeFromData() (textlayout_TypefaceFontProvider method)</a>
 </li>
       <li><a href="reference/skia.Typeface.html#skia.Typeface.MakeFromData">MakeFromData() (Typeface static method)</a>
@@ -6562,8 +6580,12 @@
 </li>
       <li><a href="reference/skia.Point3.html#skia.Point3.normalize">normalize() (Point3 method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.normalizePerspective">normalizePerspective() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.normalizePerspective">normalizePerspective() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.normalizePerspective">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Paint.html#skia.Paint.nothingToDraw">nothingToDraw() (Paint method)</a>
 </li>
       <li><a href="reference/skia.Surface.html#skia.Surface.notifyContentWillChange">notifyContentWillChange() (Surface method)</a>
@@ -6746,6 +6768,8 @@
       </ul></li>
       <li><a href="reference/skia.PerlinNoiseShader.html#skia.PerlinNoiseShader">PerlinNoiseShader (class in skia)</a>
 </li>
+      <li><a href="reference/skia.M44.html#skia.M44.Perspective">Perspective() (M44 static method)</a>
+</li>
       <li><a href="reference/skia.Picture.html#skia.Picture">Picture (class in skia)</a>
 </li>
       <li><a href="reference/skia.ImageFilters.html#skia.ImageFilters.Picture">Picture() (ImageFilters static method)</a>
@@ -6782,12 +6806,12 @@
 </li>
       <li><a href="reference/skia.Point3.html#skia.Point3">Point3 (class in skia)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.ImageFilters.html#skia.ImageFilters.PointLitDiffuse">PointLitDiffuse() (ImageFilters static method)</a>
 </li>
       <li><a href="reference/skia.ImageFilters.html#skia.ImageFilters.PointLitSpecular">PointLitSpecular() (ImageFilters static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.Canvas.PointMode.html#skia.Canvas.PointMode">PointMode (class in skia.Canvas)</a>
 </li>
       <li><a href="reference/skia.Path.html#skia.Path.Polygon">Polygon() (Path static method)</a>
@@ -6804,16 +6828,24 @@
         <li><a href="reference/skia.VectorRuntimeEffectChildPtr.html#skia.VectorRuntimeEffectChildPtr.pop">(VectorRuntimeEffectChildPtr method)</a>
 </li>
       </ul></li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.postConcat">postConcat() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.postConcat">postConcat() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.postConcat">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.postRotate">postRotate() (Matrix method)</a>
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.postScale">postScale() (Matrix method)</a>
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.postSkew">postSkew() (Matrix method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.postTranslate">postTranslate() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.postTranslate">postTranslate() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.postTranslate">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.GrContext.html#skia.GrContext.precompileShader">precompileShader() (GrContext method)</a>
 
       <ul>
@@ -6822,8 +6854,12 @@
         <li><a href="reference/skia.GrDirectContexts.html#skia.GrDirectContexts.precompileShader">(GrDirectContexts method)</a>
 </li>
       </ul></li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.preConcat">preConcat() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.preConcat">preConcat() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.preConcat">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.VkImageLayout.html#skia.VkImageLayout.PREINITIALIZED">PREINITIALIZED (VkImageLayout attribute)</a>
 </li>
       <li><a href="reference/skia.html#skia.PreMultiplyARGB">PreMultiplyARGB() (in module skia)</a>
@@ -6846,8 +6882,12 @@
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.preRotate">preRotate() (Matrix method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.preScale">preScale() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.preScale">preScale() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.preScale">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.VkImageLayout.html#skia.VkImageLayout.PRESENT_SRC_KHR">PRESENT_SRC_KHR (VkImageLayout attribute)</a>
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.preservesAxisAlignment">preservesAxisAlignment() (Matrix method)</a>
@@ -6856,8 +6896,12 @@
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.preSkew">preSkew() (Matrix method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.preTranslate">preTranslate() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.preTranslate">preTranslate() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.preTranslate">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Surface.html#skia.Surface.props">props() (Surface method)</a>
 
       <ul>
@@ -7138,8 +7182,12 @@
       </ul></li>
       <li><a href="reference/skia.Path.RawIter.html#skia.Path.RawIter">RawIter (class in skia.Path)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.rc">rc() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.rc">rc() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.rc">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Path.html#skia.Path.rConicTo">rConicTo() (Path method)</a>
 
       <ul>
@@ -7368,6 +7416,8 @@
         <li><a href="reference/skia.RSXform.html#skia.RSXform.rectStaysRect">(RSXform method)</a>
 </li>
       </ul></li>
+      <li><a href="reference/skia.M44.html#skia.M44.RectToRect">RectToRect() (M44 static method)</a>
+</li>
       <li><a href="reference/skia.Canvas.Lattice.RectType.html#skia.Canvas.Lattice.RectType">RectType (class in skia.Canvas.Lattice)</a>
 </li>
       <li><a href="reference/skia.BBoxHierarchy.html#skia.BBoxHierarchy.ref">ref() (BBoxHierarchy method)</a>
@@ -7628,6 +7678,8 @@
 </li>
       <li><a href="reference/skia.Canvas.html#skia.Canvas.rotate">rotate() (Canvas method)</a>
 </li>
+      <li><a href="reference/skia.M44.html#skia.M44.Rotate">Rotate() (M44 static method)</a>
+</li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.RotateDeg">RotateDeg() (Matrix static method)</a>
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.RotateRad">RotateRad() (Matrix static method)</a>
@@ -7654,6 +7706,10 @@
         <li><a href="reference/skia.Pixmap.html#skia.Pixmap.rowBytesAsPixels">(Pixmap method)</a>
 </li>
       </ul></li>
+      <li><a href="reference/skia.M44.html#skia.M44.RowMajor">RowMajor() (M44 static method)</a>
+</li>
+      <li><a href="reference/skia.M44.html#skia.M44.Rows">Rows() (M44 static method)</a>
+</li>
       <li><a href="reference/skia.Path.html#skia.Path.rQuadTo">rQuadTo() (Path method)</a>
 
       <ul>
@@ -7724,8 +7780,12 @@
 </li>
       <li><a href="reference/skia.Canvas.html#skia.Canvas.scale">scale() (Canvas method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.Scale">Scale() (Matrix static method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.Scale">Scale() (M44 static method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.Scale">(Matrix static method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Point.html#skia.Point.scale">scale() (Point method)</a>
 
       <ul>
@@ -7739,6 +7799,10 @@
 </li>
       </ul></li>
       <li><a href="reference/skia.Matrix.ScaleToFit.html#skia.Matrix.ScaleToFit">ScaleToFit (class in skia.Matrix)</a>
+</li>
+      <li><a href="reference/skia.FontScanner.html#skia.FontScanner.scanFace">scanFace() (FontScanner method)</a>
+</li>
+      <li><a href="reference/skia.FontScanner.html#skia.FontScanner.scanFile">scanFile() (FontScanner method)</a>
 </li>
       <li><a href="reference/skia.Codec.ScanlineOrder.html#skia.Codec.ScanlineOrder">ScanlineOrder (class in skia.Codec)</a>
 </li>
@@ -7854,6 +7918,8 @@
         <li><a href="reference/skia.GrDirectContexts.html#skia.GrDirectContexts.setBackendTextureState">(GrDirectContexts method)</a>
 </li>
       </ul></li>
+      <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setBaselineShift">setBaselineShift() (textlayout_TextStyle method)</a>
+</li>
       <li><a href="reference/skia.Font.html#skia.Font.setBaselineSnap">setBaselineSnap() (Font method)</a>
 </li>
       <li><a href="reference/skia.Paint.html#skia.Paint.setBlendMode">setBlendMode() (Paint method)</a>
@@ -7888,8 +7954,12 @@
 </li>
       <li><a href="reference/skia.Pixmap.html#skia.Pixmap.setColorSpace">setColorSpace() (Pixmap method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.setConcat">setConcat() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.setConcat">setConcat() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.setConcat">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.SVGDOM.html#skia.SVGDOM.setContainerSize">setContainerSize() (SVGDOM method)</a>
 </li>
       <li><a href="reference/skia.MemoryStream.html#skia.MemoryStream.setData">setData() (MemoryStream method)</a>
@@ -7936,13 +8006,27 @@
         <li><a href="reference/skia.PathBuilder.html#skia.PathBuilder.setFillType">(PathBuilder method)</a>
 </li>
       </ul></li>
-      <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setFontFamilies">setFontFamilies() (textlayout_TextStyle method)</a>
+      <li><a href="reference/skia.textlayout_StrutStyle.html#skia.textlayout_StrutStyle.setFontFamilies">setFontFamilies() (textlayout_StrutStyle method)</a>
+
+      <ul>
+        <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setFontFamilies">(textlayout_TextStyle method)</a>
 </li>
-      <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setFontSize">setFontSize() (textlayout_TextStyle method)</a>
+      </ul></li>
+      <li><a href="reference/skia.textlayout_StrutStyle.html#skia.textlayout_StrutStyle.setFontSize">setFontSize() (textlayout_StrutStyle method)</a>
+
+      <ul>
+        <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setFontSize">(textlayout_TextStyle method)</a>
 </li>
-      <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setFontStyle">setFontStyle() (textlayout_TextStyle method)</a>
+      </ul></li>
+      <li><a href="reference/skia.textlayout_StrutStyle.html#skia.textlayout_StrutStyle.setFontStyle">setFontStyle() (textlayout_StrutStyle method)</a>
+
+      <ul>
+        <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setFontStyle">(textlayout_TextStyle method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Font.html#skia.Font.setForceAutoHinting">setForceAutoHinting() (Font method)</a>
+</li>
+      <li><a href="reference/skia.textlayout_StrutStyle.html#skia.textlayout_StrutStyle.setForceStrutHeight">setForceStrutHeight() (textlayout_StrutStyle method)</a>
 </li>
       <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setForegroundColor">setForegroundColor() (textlayout_TextStyle method)</a>
 </li>
@@ -7950,13 +8034,33 @@
 </li>
       <li><a href="reference/skia.StrokeRec.html#skia.StrokeRec.setHairlineStyle">setHairlineStyle() (StrokeRec method)</a>
 </li>
+      <li><a href="reference/skia.textlayout_StrutStyle.html#skia.textlayout_StrutStyle.setHalfLeading">setHalfLeading() (textlayout_StrutStyle method)</a>
+
+      <ul>
+        <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setHalfLeading">(textlayout_TextStyle method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/skia.textlayout_StrutStyle.html#skia.textlayout_StrutStyle.setHeight">setHeight() (textlayout_StrutStyle method)</a>
+
+      <ul>
+        <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setHeight">(textlayout_TextStyle method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/skia.textlayout_StrutStyle.html#skia.textlayout_StrutStyle.setHeightOverride">setHeightOverride() (textlayout_StrutStyle method)</a>
+
+      <ul>
+        <li><a href="reference/skia.textlayout_TextStyle.html#skia.textlayout_TextStyle.setHeightOverride">(textlayout_TextStyle method)</a>
+</li>
+      </ul></li>
       <li><a href="reference/skia.FontParameters.Variation.Axis.html#skia.FontParameters.Variation.Axis.setHidden">setHidden() (Axis method)</a>
 </li>
       <li><a href="reference/skia.Font.html#skia.Font.setHinting">setHinting() (Font method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.setIdentity">setIdentity() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.setIdentity">setIdentity() (M44 method)</a>
 
       <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.setIdentity">(Matrix method)</a>
+</li>
         <li><a href="reference/skia.RSXform.html#skia.RSXform.setIdentity">(RSXform method)</a>
 </li>
       </ul></li>
@@ -8018,6 +8122,8 @@
         <li><a href="reference/skia.Region.html#skia.Region.setPath">(Region method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.Paint.html#skia.Paint.setPathEffect">setPathEffect() (Paint method)</a>
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.setPerspX">setPerspX() (Matrix method)</a>
@@ -8026,9 +8132,9 @@
 </li>
       <li><a href="reference/skia.Bitmap.html#skia.Bitmap.setPixels">setPixels() (Bitmap method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.setPolyToPoly">setPolyToPoly() (Matrix method)</a>
+</li>
+      <li><a href="reference/skia.M44.html#skia.M44.setRC">setRC() (M44 method)</a>
 </li>
       <li><a href="reference/skia.Region.html#skia.Region.setRect">setRect() (Region method)</a>
 
@@ -8056,12 +8162,24 @@
       </ul></li>
       <li><a href="reference/skia.StrokeRec.html#skia.StrokeRec.setResScale">setResScale() (StrokeRec method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.setRotate">setRotate() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.setRotate">setRotate() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.setRotate">(Matrix method)</a>
+</li>
+      </ul></li>
+      <li><a href="reference/skia.M44.html#skia.M44.setRotateUnit">setRotateUnit() (M44 method)</a>
+</li>
+      <li><a href="reference/skia.M44.html#skia.M44.setRotateUnitSinCos">setRotateUnitSinCos() (M44 method)</a>
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.setRSXform">setRSXform() (Matrix method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.setScale">setScale() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.setScale">setScale() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.setScale">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.setScaleTranslate">setScaleTranslate() (Matrix method)</a>
 </li>
       <li><a href="reference/skia.Font.html#skia.Font.setScaleX">setScaleX() (Font method)</a>
@@ -8112,8 +8230,12 @@
 </li>
       <li><a href="reference/skia.textlayout_ParagraphStyle.html#skia.textlayout_ParagraphStyle.setTextStyle">setTextStyle() (textlayout_ParagraphStyle method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.setTranslate">setTranslate() (Matrix method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.setTranslate">setTranslate() (M44 method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.setTranslate">(Matrix method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.setTranslateX">setTranslateX() (Matrix method)</a>
 </li>
       <li><a href="reference/skia.Matrix.html#skia.Matrix.setTranslateY">setTranslateY() (Matrix method)</a>
@@ -8501,8 +8623,12 @@
       </ul></li>
       <li><a href="reference/skia.Canvas.html#skia.Canvas.translate">translate() (Canvas method)</a>
 </li>
-      <li><a href="reference/skia.Matrix.html#skia.Matrix.Translate">Translate() (Matrix static method)</a>
+      <li><a href="reference/skia.M44.html#skia.M44.Translate">Translate() (M44 static method)</a>
+
+      <ul>
+        <li><a href="reference/skia.Matrix.html#skia.Matrix.Translate">(Matrix static method)</a>
 </li>
+      </ul></li>
       <li><a href="reference/skia.Region.html#skia.Region.translate">translate() (Region method)</a>
 </li>
       <li><a href="reference/skia.TrimPathEffect.html#skia.TrimPathEffect">TrimPathEffect (class in skia)</a>

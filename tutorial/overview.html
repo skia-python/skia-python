@@ -55,6 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="canvas.html">Canvas Creation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="path.html">Path Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="paint.html">Paint Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paragraph.html">Paragraph Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#notebook-examples">Notebook examples</a></li>
 </ul>
 </li>
@@ -108,7 +109,7 @@ draws a rectangle with specified paint, and writes the result to an image file:<
     <span class="n">canvas</span><span class="o">.</span><span class="n">drawRect</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">makeImageSnapshot</span><span class="p">()</span>
-<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;output.png&#39;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
+<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'output.png'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/overview-rect-blue.png"><img alt="Output rectangle image" src="../_images/overview-rect-blue.png" width="128" />
@@ -147,7 +148,7 @@ are specified explicitly in each draw call, via a <a class="reference internal" 
     <span class="n">canvas</span><span class="o">.</span><span class="n">restore</span><span class="p">()</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">makeImageSnapshot</span><span class="p">()</span>
-<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;output.png&#39;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
+<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'output.png'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/overview-rotated-rect.png"><img alt="Rotated rectangle" src="../_images/overview-rotated-rect.png" width="256" />
@@ -209,18 +210,18 @@ The following example demonstrates drawing of shape primitives,
     <span class="n">paint</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">skia</span><span class="o">.</span><span class="n">ColorGREEN</span><span class="p">)</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">drawPath</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 
-    <span class="n">image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;../skia/resources/images/color_wheel.png&#39;</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'../skia/resources/images/color_wheel.png'</span><span class="p">)</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 
     <span class="n">rect2</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">drawImageRect</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rect2</span><span class="p">,</span> <span class="n">paint</span><span class="p">)</span>
 
     <span class="n">paint2</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Paint</span><span class="p">()</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s1">&#39;Hello, Skia!&#39;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">TextBlob</span><span class="p">(</span><span class="s1">'Hello, Skia!'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
     <span class="n">canvas</span><span class="o">.</span><span class="n">drawTextBlob</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">paint2</span><span class="p">)</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">surface</span><span class="o">.</span><span class="n">makeImageSnapshot</span><span class="p">()</span>
-<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;output.png&#39;</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
+<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'output.png'</span><span class="p">,</span> <span class="n">skia</span><span class="o">.</span><span class="n">kPNG</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/overview-various-draws.png"><img alt="Various drawings" src="../_images/overview-various-draws.png" width="256" />
@@ -243,12 +244,12 @@ draws into numpy array:</p>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../reference/skia.Image.html#skia.Image" title="skia.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">skia.Image</span></code></a> is convertible to <code class="docutils literal notranslate"><span class="pre">PIL</span></code> image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skia_image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/path/to/input.png&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skia_image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'/path/to/input.png'</span><span class="p">)</span>
 <span class="n">pil_image</span> <span class="o">=</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span>
     <span class="n">skia_image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">alphaType</span><span class="o">=</span><span class="n">skia</span><span class="o">.</span><span class="n">kUnpremul_AlphaType</span><span class="p">))</span>
 
 <span class="n">skia_image</span> <span class="o">=</span> <span class="n">skia</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">frombytes</span><span class="p">(</span>
-    <span class="n">pil_image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tobytes</span><span class="p">(),</span>
+    <span class="n">pil_image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">'RGBA'</span><span class="p">)</span><span class="o">.</span><span class="n">tobytes</span><span class="p">(),</span>
     <span class="n">pil_image</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
     <span class="n">skia</span><span class="o">.</span><span class="n">kRGBA_8888_ColorType</span><span class="p">)</span>
 </pre></div>

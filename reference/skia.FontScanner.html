@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FontScanner &mdash; skia-python 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FontStyle" href="skia.FontStyle.html" />
+    <link rel="prev" title="FontParameters.Variation.Axis" href="skia.FontParameters.Variation.Axis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            skia-python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="skia.html">skia</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="skia.AlphaType.html">AlphaType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.AutoCanvasRestore.html">AutoCanvasRestore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.BBHFactory.html">BBHFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.BBoxHierarchy.html">BBoxHierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Bitmap.html">Bitmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.BlendMode.html">BlendMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.BlendModeCoeff.html">BlendModeCoeff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.BlurMaskFilter.html">BlurMaskFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.BlurStyle.html">BlurStyle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Budgeted.html">Budgeted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Canvas.html">Canvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ClipOp.html">ClipOp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Codec.html">Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Color4f.html">Color4f</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorChannel.html">ColorChannel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorChannelFlag.html">ColorChannelFlag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorFilter.html">ColorFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorFilters.html">ColorFilters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorInfo.html">ColorInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorMatrix.html">ColorMatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorMatrixFilter.html">ColorMatrixFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorSpace.html">ColorSpace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ColorType.html">ColorType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ConvergeMode.html">ConvergeMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.CornerPathEffect.html">CornerPathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.CubicResampler.html">CubicResampler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.DashPathEffect.html">DashPathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Data.html">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.DiscretePathEffect.html">DiscretePathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Document.html">Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Drawable.html">Drawable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.DynamicMemoryWStream.html">DynamicMemoryWStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.EncodedImageFormat.html">EncodedImageFormat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.EncodedOrigin.html">EncodedOrigin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FILEStream.html">FILEStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FILEWStream.html">FILEWStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FilterMode.html">FilterMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Flattanable.html">Flattanable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Font.html">Font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontArguments.html">FontArguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontHinting.html">FontHinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FontScanner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#skia.FontScanner"><code class="docutils literal notranslate"><span class="pre">FontScanner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrBackendFormat.html">GrBackendFormat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrBackendRenderTarget.html">GrBackendRenderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrBackendRenderTargets.html">GrBackendRenderTargets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrBackendSemaphore.html">GrBackendSemaphore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrBackendTexture.html">GrBackendTexture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrColorType.html">GrColorType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrContext.html">GrContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrContextOptions.html">GrContextOptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrContext_Base.html">GrContext_Base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrDirectContext.html">GrDirectContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrDirectContexts.html">GrDirectContexts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrFlushInfo.html">GrFlushInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrGLBackendState.html">GrGLBackendState</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrGLFormat.html">GrGLFormat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrGLFramebufferInfo.html">GrGLFramebufferInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrGLInterface.html">GrGLInterface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrGLTextureInfo.html">GrGLTextureInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrImageContext.html">GrImageContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrMipmapped.html">GrMipmapped</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrMockOptions.html">GrMockOptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrMockRenderTargetInfo.html">GrMockRenderTargetInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrMockTextureInfo.html">GrMockTextureInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrProtected.html">GrProtected</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrPurgeResourceOptions.html">GrPurgeResourceOptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrRecordingContext.html">GrRecordingContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrRenderable.html">GrRenderable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrSemaphoresSubmitted.html">GrSemaphoresSubmitted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrSurfaceOrigin.html">GrSurfaceOrigin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrSyncCpu.html">GrSyncCpu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrTextureType.html">GrTextureType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrVkAlloc.html">GrVkAlloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrVkBackendContext.html">GrVkBackendContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrVkDrawableInfo.html">GrVkDrawableInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrVkImageInfo.html">GrVkImageInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GrVkYcbcrConversionInfo.html">GrVkYcbcrConversionInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.GradientShader.html">GradientShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.HighContrastConfig.html">HighContrastConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.HighContrastFilter.html">HighContrastFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.IPoint.html">IPoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.IRect.html">IRect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ISize.html">ISize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ImageFilter.html">ImageFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ImageFilters.html">ImageFilters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ImageInfo.html">ImageInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Line2DPathEffect.html">Line2DPathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.LumaColorFilter.html">LumaColorFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.M44.html">M44</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.MaskFilter.html">MaskFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Matrix.html">Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.MemoryStream.html">MemoryStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.MipmapBuilder.html">MipmapBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.MipmapMode.html">MipmapMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.NullWStream.html">NullWStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.OpBuilder.html">OpBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.OverdrawColorFilter.html">OverdrawColorFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PDF.html">PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Paint.html">Paint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Path.html">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Path1DPathEffect.html">Path1DPathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Path2DPathEffect.html">Path2DPathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathBuilder.html">PathBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathDirection.html">PathDirection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathEffect.html">PathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathFillType.html">PathFillType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathMeasure.html">PathMeasure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathOp.html">PathOp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathSegmentMask.html">PathSegmentMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PathVerb.html">PathVerb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PerlinNoiseShader.html">PerlinNoiseShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Picture.html">Picture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PictureRecorder.html">PictureRecorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PixelGeometry.html">PixelGeometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.PixelRef.html">PixelRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Pixmap.html">Pixmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Point.html">Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Point3.html">Point3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RRect.html">RRect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RSXform.html">RSXform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RTreeFactory.html">RTreeFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Rect.html">Rect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RefCnt.html">RefCnt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RefCntBase.html">RefCntBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Region.html">Region</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeBlendBuilder.html">RuntimeBlendBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeColorFilterBuilder.html">RuntimeColorFilterBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffect.html">RuntimeEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffectBuilder.html">RuntimeEffectBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffectBuilderChild.html">RuntimeEffectBuilderChild</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffectBuilderUniform.html">RuntimeEffectBuilderUniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffectChild.html">RuntimeEffectChild</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffectChildPtr.html">RuntimeEffectChildPtr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffectResult.html">RuntimeEffectResult</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeEffectUniform.html">RuntimeEffectUniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.RuntimeShaderBuilder.html">RuntimeShaderBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SVGCanvas.html">SVGCanvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SVGDOM.html">SVGDOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SamplingOptions.html">SamplingOptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Shader.html">Shader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.ShaderMaskFilter.html">ShaderMaskFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Shaders.html">Shaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Size.html">Size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SpanRuntimeEffectChild.html">SpanRuntimeEffectChild</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SpanRuntimeEffectChildPtr.html">SpanRuntimeEffectChildPtr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SpanRuntimeEffectUniform.html">SpanRuntimeEffectUniform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Stream.html">Stream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.StreamAsset.html">StreamAsset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.StreamMemory.html">StreamMemory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.StreamRewindable.html">StreamRewindable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.StreamSeekable.html">StreamSeekable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.String.html">String</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.StrokeRec.html">StrokeRec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Surface.html">Surface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SurfaceCharacterization.html">SurfaceCharacterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.SurfaceProps.html">SurfaceProps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Surfaces.html">Surfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.TableColorFilter.html">TableColorFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.TableMaskFilter.html">TableMaskFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.TextBlob.html">TextBlob</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.TextBlobBuilder.html">TextBlobBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.TextEncoding.html">TextEncoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.TileMode.html">TileMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.TrimPathEffect.html">TrimPathEffect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Typeface.html">Typeface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Unicode.html">Unicode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.V2.html">V2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.V3.html">V3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.V4.html">V4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.VectorRuntimeEffectChild.html">VectorRuntimeEffectChild</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.VectorRuntimeEffectChildPtr.html">VectorRuntimeEffectChildPtr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.Vertices.html">Vertices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.VkFormat.html">VkFormat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.VkImageLayout.html">VkImageLayout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.WStream.html">WStream</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.YUVAInfo.html">YUVAInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.YUVAPixmapInfo.html">YUVAPixmapInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.YUVAPixmaps.html">YUVAPixmaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.YUVColorSpace.html">YUVColorSpace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.gpuBackendApi.html">gpuBackendApi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_FontCollection.html">textlayout_FontCollection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_Paragraph.html">textlayout_Paragraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_ParagraphBuilder.html">textlayout_ParagraphBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_ParagraphStyle.html">textlayout_ParagraphStyle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_StrutStyle.html">textlayout_StrutStyle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_TextAlign.html">textlayout_TextAlign</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_TextDecoration.html">textlayout_TextDecoration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_TextDecorationMode.html">textlayout_TextDecorationMode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_TextDecorationStyle.html">textlayout_TextDecorationStyle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_TextStyle.html">textlayout_TextStyle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.textlayout_TypefaceFontProvider.html">textlayout_TypefaceFontProvider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">skia-python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../reference.html">Reference</a></li>
+          <li class="breadcrumb-item"><a href="skia.html">skia</a></li>
+      <li class="breadcrumb-item active">FontScanner</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/skia.FontScanner.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fontscanner">
+<h1>FontScanner<a class="headerlink" href="#fontscanner" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="skia.FontScanner">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">FontScanner</span></span><a class="headerlink" href="#skia.FontScanner" title="Link to this definition"></a></dt>
+<dd><p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.FontScanner.MakeFromData" title="skia.FontScanner.MakeFromData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MakeFromData</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.FontScanner.__init__" title="skia.FontScanner.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.FontScanner.scanFace" title="skia.FontScanner.scanFace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scanFace</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.FontScanner.scanFile" title="skia.FontScanner.scanFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scanFile</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.FontScanner.MakeFromData">
+<span class="sig-prename descclassname"><span class="pre">FontScanner.</span></span><span class="sig-name descname"><span class="pre">MakeFromData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.FontScanner" title="skia.FontScanner"><span class="pre">skia.FontScanner</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="skia.Data.html#skia.Data" title="skia.Data"><span class="pre">skia.Data</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="skia.FontArguments.html#skia.FontArguments" title="skia.FontArguments"><span class="pre">skia.FontArguments</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SkTypeface</span></span></span><a class="headerlink" href="#skia.FontScanner.MakeFromData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.FontScanner.__init__">
+<span class="sig-prename descclassname"><span class="pre">FontScanner.</span></span><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.FontScanner" title="skia.FontScanner"><span class="pre">skia.FontScanner</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.FontScanner.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.FontScanner.scanFace">
+<span class="sig-prename descclassname"><span class="pre">FontScanner.</span></span><span class="sig-name descname"><span class="pre">scanFace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.FontScanner" title="skia.FontScanner"><span class="pre">skia.FontScanner</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="skia.StreamAsset.html#skia.StreamAsset" title="skia.StreamAsset"><span class="pre">skia.StreamAsset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">faceIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numInstances</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#skia.FontScanner.scanFace" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.FontScanner.scanFile">
+<span class="sig-prename descclassname"><span class="pre">FontScanner.</span></span><span class="sig-name descname"><span class="pre">scanFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.FontScanner" title="skia.FontScanner"><span class="pre">skia.FontScanner</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="skia.StreamAsset.html#skia.StreamAsset" title="skia.StreamAsset"><span class="pre">skia.StreamAsset</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">numFaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#skia.FontScanner.scanFile" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="skia.FontParameters.Variation.Axis.html" class="btn btn-neutral float-left" title="FontParameters.Variation.Axis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="skia.FontStyle.html" class="btn btn-neutral float-right" title="FontStyle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Kota Yamaguchi.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

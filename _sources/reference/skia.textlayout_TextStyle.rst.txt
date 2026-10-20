@@ -20,6 +20,7 @@ textlayout\_TextStyle
    
       ~skia.textlayout_TextStyle.__init__
       ~skia.textlayout_TextStyle.cloneForPlaceholder
+      ~skia.textlayout_TextStyle.setBaselineShift
       ~skia.textlayout_TextStyle.setColor
       ~skia.textlayout_TextStyle.setDecoration
       ~skia.textlayout_TextStyle.setDecorationColor
@@ -31,6 +32,9 @@ textlayout\_TextStyle
       ~skia.textlayout_TextStyle.setFontStyle
       ~skia.textlayout_TextStyle.setForegroundColor
       ~skia.textlayout_TextStyle.setForegroundPaint
+      ~skia.textlayout_TextStyle.setHalfLeading
+      ~skia.textlayout_TextStyle.setHeight
+      ~skia.textlayout_TextStyle.setHeightOverride
       ~skia.textlayout_TextStyle.setLetterSpacing
       ~skia.textlayout_TextStyle.setLocale
       ~skia.textlayout_TextStyle.setWordSpacing
@@ -53,6 +57,8 @@ Methods
 
 .. automethod:: skia.textlayout_TextStyle.cloneForPlaceholder
 
+.. automethod:: skia.textlayout_TextStyle.setBaselineShift
+
 .. automethod:: skia.textlayout_TextStyle.setColor
 
 .. automethod:: skia.textlayout_TextStyle.setDecoration
@@ -74,6 +80,12 @@ Methods
 .. automethod:: skia.textlayout_TextStyle.setForegroundColor
 
 .. automethod:: skia.textlayout_TextStyle.setForegroundPaint
+
+.. automethod:: skia.textlayout_TextStyle.setHalfLeading
+
+.. automethod:: skia.textlayout_TextStyle.setHeight
+
+.. automethod:: skia.textlayout_TextStyle.setHeightOverride
 
 .. automethod:: skia.textlayout_TextStyle.setLetterSpacing
 

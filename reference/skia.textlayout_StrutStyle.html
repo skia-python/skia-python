@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMetrics.html">FontMetrics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontMgr.html">FontMgr</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontParameters.html">FontParameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skia.FontScanner.html">FontScanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyle.html">FontStyle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.FontStyleSet.html">FontStyleSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skia.GrBackendApi.html">GrBackendApi</a></li>
@@ -293,10 +294,31 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.__init__" title="skia.textlayout_StrutStyle.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setLeading" title="skia.textlayout_StrutStyle.setLeading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLeading</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setFontFamilies" title="skia.textlayout_StrutStyle.setFontFamilies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontFamilies</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setStrutEnabled" title="skia.textlayout_StrutStyle.setStrutEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrutEnabled</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setFontSize" title="skia.textlayout_StrutStyle.setFontSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontSize</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setFontStyle" title="skia.textlayout_StrutStyle.setFontStyle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setFontStyle</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setForceStrutHeight" title="skia.textlayout_StrutStyle.setForceStrutHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setForceStrutHeight</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setHalfLeading" title="skia.textlayout_StrutStyle.setHalfLeading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHalfLeading</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setHeight" title="skia.textlayout_StrutStyle.setHeight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHeight</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setHeightOverride" title="skia.textlayout_StrutStyle.setHeightOverride"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setHeightOverride</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setLeading" title="skia.textlayout_StrutStyle.setLeading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setLeading</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skia.textlayout_StrutStyle.setStrutEnabled" title="skia.textlayout_StrutStyle.setStrutEnabled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setStrutEnabled</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -308,6 +330,41 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="skia.textlayout_StrutStyle.__init__">
 <span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.__init__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_StrutStyle.setFontFamilies">
+<span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">setFontFamilies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">families</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="skia.String.html#skia.String" title="skia.String"><span class="pre">skia.String</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.setFontFamilies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_StrutStyle.setFontSize">
+<span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">setFontSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsFloat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.setFontSize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_StrutStyle.setFontStyle">
+<span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">setFontStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontstyle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="skia.FontStyle.html#skia.FontStyle" title="skia.FontStyle"><span class="pre">skia.FontStyle</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.setFontStyle" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_StrutStyle.setForceStrutHeight">
+<span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">setForceStrutHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">forcestrutheight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.setForceStrutHeight" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_StrutStyle.setHalfLeading">
+<span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">setHalfLeading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">halfleading</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.setHalfLeading" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_StrutStyle.setHeight">
+<span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">setHeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsFloat</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">SupportsIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.setHeight" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="skia.textlayout_StrutStyle.setHeightOverride">
+<span class="sig-prename descclassname"><span class="pre">textlayout_StrutStyle.</span></span><span class="sig-name descname"><span class="pre">setHeightOverride</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#skia.textlayout_StrutStyle" title="skia.textlayout_StrutStyle"><span class="pre">skia.textlayout_StrutStyle</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">heightoverride</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#skia.textlayout_StrutStyle.setHeightOverride" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

@@ -19,6 +19,13 @@ textlayout\_StrutStyle
       :nosignatures:
    
       ~skia.textlayout_StrutStyle.__init__
+      ~skia.textlayout_StrutStyle.setFontFamilies
+      ~skia.textlayout_StrutStyle.setFontSize
+      ~skia.textlayout_StrutStyle.setFontStyle
+      ~skia.textlayout_StrutStyle.setForceStrutHeight
+      ~skia.textlayout_StrutStyle.setHalfLeading
+      ~skia.textlayout_StrutStyle.setHeight
+      ~skia.textlayout_StrutStyle.setHeightOverride
       ~skia.textlayout_StrutStyle.setLeading
       ~skia.textlayout_StrutStyle.setStrutEnabled
    
@@ -37,6 +44,20 @@ Methods
 
 
 .. automethod:: skia.textlayout_StrutStyle.__init__
+
+.. automethod:: skia.textlayout_StrutStyle.setFontFamilies
+
+.. automethod:: skia.textlayout_StrutStyle.setFontSize
+
+.. automethod:: skia.textlayout_StrutStyle.setFontStyle
+
+.. automethod:: skia.textlayout_StrutStyle.setForceStrutHeight
+
+.. automethod:: skia.textlayout_StrutStyle.setHalfLeading
+
+.. automethod:: skia.textlayout_StrutStyle.setHeight
+
+.. automethod:: skia.textlayout_StrutStyle.setHeightOverride
 
 .. automethod:: skia.textlayout_StrutStyle.setLeading
 
