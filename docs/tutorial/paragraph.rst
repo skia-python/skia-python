@@ -296,3 +296,45 @@ needs a fraction more than that. The same paragraph can be laid out again at any
 and the metrics follow, which is enough to fit text to a box by width. Fitting by font
 size needs a new paragraph each time, because the text style is fixed once ``Build()``
 is called.
+
+Inspecting native lines and glyph runs
+-------------------------------------
+
+After ``layout()``, ``getLineMetrics()`` returns numeric native line metrics.
+``getLineMetricsAt(lineNumber)`` returns one line or ``None`` when that zero-based
+line number does not exist. These values are copies; the internal map of
+paragraph-owned ``TextStyle`` pointers is not exposed.
+
+``getRectsForRange(start, end, rectHeightStyle, rectWidthStyle)`` uses a half-open
+UTF-16 range, while ``getActualTextRange(lineNumber, includeSpaces)`` and the
+ranges in ``getFonts()`` use native UTF-8 byte offsets. Do not pass a Python
+character index to either API without accounting for that distinction.
+``getFontAtUTF16Offset(offset)`` returns the font actually used for shaping at
+the given UTF-16 offset; it is not a prediction from a font-family lookup.
+
+``visit(callback)`` and ``extendedVisit(callback)`` call
+``callback(lineNumber, info)`` for each native run and
+``callback(lineNumber, None)`` at the end of each native line. The extended
+visitor also exposes the native per-glyph ink bounds::
+
+    runs = []
+    paragraph.extendedVisit(lambda line, info: runs.append((line, info)))
+    for line, info in runs:
+        if info is not None:
+            print(line, info.font.refTypeface().getFamilyName(), info.glyphs)
+            print(info.positions, info.bounds)
+
+Visitor results own copies of their fonts and arrays and can be retained after
+the callback, paragraph relayout, or paragraph destruction. Arrays preserve
+native order. ``utf8Starts`` exposes one native cluster start per glyph; no
+terminal offset is inferred. Callback exceptions propagate normally. Do not
+relayout or otherwise mutate the paragraph from inside its visitor callback.
+
+These are introspection bindings, not a Canvas ``TextMetrics`` implementation:
+glyph bounds, positions and baseline values are returned without joining,
+shifting, rounding or other layout changes. ``unresolvedGlyphs()`` and
+``unresolvedCodepoints()`` expose the native diagnostics.
+
+For embedded or application fonts, ``FontCollection.setAssetFontManager()``
+accepts an existing ``TypefaceFontProvider`` while preserving the collection's
+separate default/system font manager and native fallback behavior.
