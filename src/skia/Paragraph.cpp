@@ -251,6 +251,12 @@ strut_style
 
 paragraph_style
     .def(py::init())
+    .def("setMaxLines", &ParagraphStyle::setMaxLines,
+        "Set the native maximum laid-out line count.", py::arg("maxLines"))
+    .def("hintingIsOn", &ParagraphStyle::hintingIsOn,
+        "Return the native paragraph hinting flag.")
+    .def("turnHintingOff", &ParagraphStyle::turnHintingOff,
+        "Disable paragraph hinting through the native implementation.")
     .def("setTextStyle",
         py::overload_cast<const TextStyle&>(&ParagraphStyle::setTextStyle),
         R"docstring(
@@ -292,6 +298,13 @@ font_collection
 
 text_style
     .def(py::init())
+    .def("setTypeface", &TextStyle::setTypeface,
+        "Retain the native typeface used for this style's font metrics.", py::arg("typeface"))
+    .def("getFontMetrics", [](const TextStyle& self) {
+        SkFontMetrics metrics;
+        self.getFontMetrics(&metrics);
+        return metrics;
+    }, "Return an owning copy of native style metrics, including native height/baseline adjustments.")
     .def("cloneForPlaceholder", &TextStyle::cloneForPlaceholder)
     .def("setColor",
         py::overload_cast<SkColor>(&TextStyle::setColor),
@@ -485,3 +498,4 @@ for (const char* name : {"RectHeightStyle", "RectWidthStyle", "TextDirection", "
     m.attr("textlayout").attr(name) = m.attr((std::string("textlayout_") + name).c_str());
 }
 }
+

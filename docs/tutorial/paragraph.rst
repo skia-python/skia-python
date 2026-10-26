@@ -338,3 +338,15 @@ shifting, rounding or other layout changes. ``unresolvedGlyphs()`` and
 For embedded or application fonts, ``FontCollection.setAssetFontManager()``
 accepts an existing ``TypefaceFontProvider`` while preserving the collection's
 separate default/system font manager and native fallback behavior.
+
+``TextStyle.setTypeface()`` retains the selected native typeface, and
+``TextStyle.getFontMetrics()`` returns an owning ``FontMetrics`` value. Native
+height overrides, half-leading and baseline shifts are applied by Skia itself;
+callers need not reconstruct those adjustments from raw font metrics. Retained
+metrics remain valid when the style changes or is destroyed.
+
+``ParagraphStyle.setMaxLines()`` controls the native line limit.
+``hintingIsOn()`` reports the native hinting flag and ``turnHintingOff()`` disables
+it. These expose existing native controls; they do not provide a separate
+shaping or painting implementation.
+

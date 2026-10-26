@@ -184,3 +184,55 @@ def test_inspection_does_not_change_pixels(metrics_paragraph):
     collect_visits(paragraph, True)
     paragraph.getFonts()
     assert paint() == before
+
+
+def test_text_style_metrics_keep_typeface_and_snapshot_lifetime():
+    """Style metrics retain the selected face and return independent value copies."""
+    face = skia.Typeface.MakeDefault()
+    assert face is not None
+    style = skia.textlayout.TextStyle()
+    style.setTypeface(face)
+    style.setFontSize(24)
+    raw = skia.Font(face, 24).getMetrics()
+    snapshot = style.getFontMetrics()
+    assert snapshot.fAscent == pytest.approx(raw.fAscent - raw.fLeading / 2)
+    assert snapshot.fDescent == pytest.approx(raw.fDescent + raw.fLeading / 2)
+    before = (snapshot.fAscent, snapshot.fDescent, snapshot.fLeading)
+    style.setFontSize(48)
+    assert style.getFontMetrics().fAscent != snapshot.fAscent
+    del face, style
+    gc.collect()
+    assert (snapshot.fAscent, snapshot.fDescent, snapshot.fLeading) == before
+
+
+def test_text_style_metrics_apply_native_height_and_baseline_shift():
+    """Height override and baseline shift are calculated by Skia, not Python glue."""
+    style = skia.textlayout.TextStyle()
+    style.setTypeface(skia.Typeface.MakeDefault())
+    style.setFontSize(24)
+    style.setHeight(2)
+    style.setHeightOverride(True)
+    before = style.getFontMetrics()
+    assert before.fDescent - before.fAscent == pytest.approx(48)
+    style.setBaselineShift(3)
+    after = style.getFontMetrics()
+    assert after.fAscent == pytest.approx(before.fAscent + 3)
+    assert after.fDescent == pytest.approx(before.fDescent + 3)
+
+
+def test_paragraph_style_hinting_and_single_line_controls():
+    """Bind native flag/line limit setters without reconstructing layout in Python."""
+    style = skia.textlayout.ParagraphStyle()
+    assert style.hintingIsOn() is True
+    style.turnHintingOff()
+    assert style.hintingIsOn() is False
+    style.setMaxLines(1)
+    fonts = skia.textlayout.FontCollection()
+    fonts.setDefaultFontManager(skia.FontMgr.RefDefault())
+    builder = skia.textlayout.ParagraphBuilder.make(style, fonts, skia.Unicodes.ICU.Make())
+    builder.addText("Ag\nNext")
+    paragraph = builder.Build()
+    paragraph.layout(1000)
+    assert paragraph.lineNumber() == 1
+    assert paragraph.ExceedMaxLines
+
