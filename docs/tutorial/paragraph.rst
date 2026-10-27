@@ -357,3 +357,10 @@ the older paragraph flag alone does not change that value. For example,
 font hinting for runs using that style. Use the real run-font query or visitor
 to inspect the result rather than inferring it from the paragraph flag.
 
+Raster text mask blending is a separate surface setting, not font hinting.
+``SurfaceProps(flags, geometry, textContrast, textGamma)`` exposes the native
+constructor with explicit text contrast/gamma. ``textContrast()`` and
+``textGamma()`` read those native values. The default and two-argument
+constructors retain the existing native defaults; no pixel adjustment or
+automatic substitution is performed by the binding.
+
