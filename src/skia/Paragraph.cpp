@@ -300,6 +300,10 @@ text_style
     .def(py::init())
     .def("setTypeface", &TextStyle::setTypeface,
         "Retain the native typeface used for this style's font metrics.", py::arg("typeface"))
+    .def("setFontHinting", &TextStyle::setFontHinting,
+        "Set the native font hinting used by this text style's shaped runs.", py::arg("hinting"))
+    .def("getFontHinting", &TextStyle::getFontHinting,
+        "Return this text style's native font hinting.")
     .def("getFontMetrics", [](const TextStyle& self) {
         SkFontMetrics metrics;
         self.getFontMetrics(&metrics);

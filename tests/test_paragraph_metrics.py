@@ -236,3 +236,26 @@ def test_paragraph_style_hinting_and_single_line_controls():
     assert paragraph.lineNumber() == 1
     assert paragraph.ExceedMaxLines
 
+
+@pytest.mark.parametrize("hinting", [skia.FontHinting.kNone, skia.FontHinting.kSlight, skia.FontHinting.kNormal])
+def test_text_style_hinting_controls_actual_shaped_font(hinting):
+    """The TextStyle value, not the obsolete paragraph flag, reaches actual runs."""
+    text = skia.textlayout.TextStyle()
+    assert text.getFontHinting() == skia.FontHinting.kSlight
+    text.setFontHinting(hinting)
+    assert text.getFontHinting() == hinting
+    text.setFontSize(32)
+    paragraph_style = skia.textlayout.ParagraphStyle()
+    paragraph_style.turnHintingOff()
+    paragraph_style.setTextStyle(text)
+    fonts = skia.textlayout.FontCollection()
+    fonts.setDefaultFontManager(skia.FontMgr.RefDefault())
+    builder = skia.textlayout.ParagraphBuilder.make(paragraph_style, fonts, skia.Unicodes.ICU.Make())
+    builder.addText("Ag")
+    paragraph = builder.Build()
+    paragraph.layout(500)
+    assert paragraph.getFontAtUTF16Offset(0).getHinting() == hinting
+    runs = collect_visits(paragraph, True)
+    assert any(info is not None for _, info in runs)
+    assert all(info.font.getHinting() == hinting for _, info in runs if info is not None)
+

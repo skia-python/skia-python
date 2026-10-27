@@ -350,3 +350,10 @@ metrics remain valid when the style changes or is destroyed.
 it. These expose existing native controls; they do not provide a separate
 shaping or painting implementation.
 
+For actual shaped-font hinting, use ``TextStyle.setFontHinting()`` and
+``getFontHinting()``. Skia 144 shapes runs with the text-style value; changing
+the older paragraph flag alone does not change that value. For example,
+``text_style.setFontHinting(skia.FontHinting.kNone)`` explicitly disables native
+font hinting for runs using that style. Use the real run-font query or visitor
+to inspect the result rather than inferring it from the paragraph flag.
+
