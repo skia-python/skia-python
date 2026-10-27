@@ -364,3 +364,12 @@ constructor with explicit text contrast/gamma. ``textContrast()`` and
 constructors retain the existing native defaults; no pixel adjustment or
 automatic substitution is performed by the binding.
 
+``FontCollection.findTypefaces(familyNames, fontStyle)`` accepts Python family
+strings and returns owning native typefaces in native order, including duplicate
+matches and the existing default-family fallback. It does not implement matching
+in the binding. ``setDynamicFontManager()`` retains a native manager searched
+before asset/default managers; ``clearCaches()`` explicitly invalidates native
+paragraph/typeface caches after configuration changes. ``None`` removes a manager.
+
+``FontMgr.legacyMakeTypeface(None, style)`` passes a null family pointer for native
+default selection. Existing string arguments keep their previous behavior.

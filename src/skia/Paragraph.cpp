@@ -276,6 +276,23 @@ paragraph_style
 
 font_collection
     .def(py::init())
+    .def("findTypefaces",
+        [] (FontCollection& collection, const std::vector<std::string>& families,
+            SkFontStyle style) {
+            std::vector<SkString> nativeFamilies;
+            nativeFamilies.reserve(families.size());
+            for (const auto& family : families) {
+                nativeFamilies.emplace_back(family.c_str());
+            }
+            return collection.findTypefaces(nativeFamilies, style);
+        },
+        "Return owning native matches in requested order, including native default fallback.",
+        py::arg("familyNames"), py::arg("fontStyle"))
+    .def("setDynamicFontManager", &FontCollection::setDynamicFontManager,
+        "Set the native dynamic manager, searched before asset and default managers.",
+        py::arg("fontManager"))
+    .def("clearCaches", &FontCollection::clearCaches,
+        "Clear the collection's native paragraph/typeface caches without recreating results.")
     .def("setAssetFontManager", &FontCollection::setAssetFontManager,
         "Set the asset font manager; retain the existing native fallback policy.",
         py::arg("fontManager"))
@@ -502,4 +519,3 @@ for (const char* name : {"RectHeightStyle", "RectWidthStyle", "TextDirection", "
     m.attr("textlayout").attr(name) = m.attr((std::string("textlayout_") + name).c_str());
 }
 }
-
