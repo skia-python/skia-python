@@ -6,6 +6,7 @@
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
 #include <pybind11/iostream.h>
+#include <optional>
 #ifdef __linux__
 #include <freetype/freetype.h>
 #include <freetype/ftcolor.h>
@@ -936,10 +937,11 @@ py::class_<SkFontMgr, sk_sp<SkFontMgr>, SkRefCnt>(m, "FontMgr",
         )docstring",
         py::arg("path"), py::arg("ttcIndex") = 0)
     .def("legacyMakeTypeface",
-        [] (const SkFontMgr& fontmgr, const std::string& familyName,
+        [] (const SkFontMgr& fontmgr, const std::optional<std::string>& familyName,
             const SkFontStyle& style) {
-            return fontmgr.legacyMakeTypeface(familyName.c_str(), style);
+            return fontmgr.legacyMakeTypeface(familyName ? familyName->c_str() : nullptr, style);
         },
+        "Match an explicit family or pass None for the native default; strings retain their existing behavior.",
         py::arg("familyName"), py::arg("style"))
     .def_static("RefDefault", &SkFontMgr_RefDefault,
         R"docstring(

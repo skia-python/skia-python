@@ -87,6 +87,9 @@ surfaceprops
     .def(py::init<>())
     .def(py::init<uint32_t, SkPixelGeometry>(),
         py::arg("flags"), py::arg("geometry"))
+    .def(py::init<uint32_t, SkPixelGeometry, SkScalar, SkScalar>(),
+        "Construct native surface properties with explicit text contrast/gamma.",
+        py::arg("flags"), py::arg("geometry"), py::arg("textContrast"), py::arg("textGamma"))
 /*
     .def(py::init<SkSurfaceProps::InitType>(),
         py::arg("initType"))
@@ -97,6 +100,10 @@ surfaceprops
         py::arg("props"))
     .def("flags", &SkSurfaceProps::flags)
     .def("pixelGeometry", &SkSurfaceProps::pixelGeometry)
+    .def("textContrast", &SkSurfaceProps::textContrast,
+        "Return the native text mask contrast.")
+    .def("textGamma", &SkSurfaceProps::textGamma,
+        "Return the native text mask gamma; zero selects the native sRGB response.")
     .def("isUseDeviceIndependentFonts",
         &SkSurfaceProps::isUseDeviceIndependentFonts)
     .def(py::self == py::self)
@@ -1307,3 +1314,4 @@ surface
 m.attr("Surfaces") = m.attr("Surface");
 m.attr("Surface").attr("Raster") = m.attr("Surface").attr("MakeRaster");
 }
+
