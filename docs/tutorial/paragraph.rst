@@ -296,3 +296,80 @@ needs a fraction more than that. The same paragraph can be laid out again at any
 and the metrics follow, which is enough to fit text to a box by width. Fitting by font
 size needs a new paragraph each time, because the text style is fixed once ``Build()``
 is called.
+
+Inspecting native lines and glyph runs
+-------------------------------------
+
+After ``layout()``, ``getLineMetrics()`` returns numeric native line metrics.
+``getLineMetricsAt(lineNumber)`` returns one line or ``None`` when that zero-based
+line number does not exist. These values are copies; the internal map of
+paragraph-owned ``TextStyle`` pointers is not exposed.
+
+``getRectsForRange(start, end, rectHeightStyle, rectWidthStyle)`` uses a half-open
+UTF-16 range, while ``getActualTextRange(lineNumber, includeSpaces)`` and the
+ranges in ``getFonts()`` use native UTF-8 byte offsets. Do not pass a Python
+character index to either API without accounting for that distinction.
+``getFontAtUTF16Offset(offset)`` returns the font actually used for shaping at
+the given UTF-16 offset; it is not a prediction from a font-family lookup.
+
+``visit(callback)`` and ``extendedVisit(callback)`` call
+``callback(lineNumber, info)`` for each native run and
+``callback(lineNumber, None)`` at the end of each native line. The extended
+visitor also exposes the native per-glyph ink bounds::
+
+    runs = []
+    paragraph.extendedVisit(lambda line, info: runs.append((line, info)))
+    for line, info in runs:
+        if info is not None:
+            print(line, info.font.refTypeface().getFamilyName(), info.glyphs)
+            print(info.positions, info.bounds)
+
+Visitor results own copies of their fonts and arrays and can be retained after
+the callback, paragraph relayout, or paragraph destruction. Arrays preserve
+native order. ``utf8Starts`` exposes one native cluster start per glyph; no
+terminal offset is inferred. Callback exceptions propagate normally. Do not
+relayout or otherwise mutate the paragraph from inside its visitor callback.
+
+These are introspection bindings, not a Canvas ``TextMetrics`` implementation:
+glyph bounds, positions and baseline values are returned without joining,
+shifting, rounding or other layout changes. ``unresolvedGlyphs()`` and
+``unresolvedCodepoints()`` expose the native diagnostics.
+
+For embedded or application fonts, ``FontCollection.setAssetFontManager()``
+accepts an existing ``TypefaceFontProvider`` while preserving the collection's
+separate default/system font manager and native fallback behavior.
+
+``TextStyle.setTypeface()`` retains the selected native typeface, and
+``TextStyle.getFontMetrics()`` returns an owning ``FontMetrics`` value. Native
+height overrides, half-leading and baseline shifts are applied by Skia itself;
+callers need not reconstruct those adjustments from raw font metrics. Retained
+metrics remain valid when the style changes or is destroyed.
+
+``ParagraphStyle.setMaxLines()`` controls the native line limit.
+``hintingIsOn()`` reports the native hinting flag and ``turnHintingOff()`` disables
+it. These expose existing native controls; they do not provide a separate
+shaping or painting implementation.
+
+For actual shaped-font hinting, use ``TextStyle.setFontHinting()`` and
+``getFontHinting()``. Skia 144 shapes runs with the text-style value; changing
+the older paragraph flag alone does not change that value. For example,
+``text_style.setFontHinting(skia.FontHinting.kNone)`` explicitly disables native
+font hinting for runs using that style. Use the real run-font query or visitor
+to inspect the result rather than inferring it from the paragraph flag.
+
+Raster text mask blending is a separate surface setting, not font hinting.
+``SurfaceProps(flags, geometry, textContrast, textGamma)`` exposes the native
+constructor with explicit text contrast/gamma. ``textContrast()`` and
+``textGamma()`` read those native values. The default and two-argument
+constructors retain the existing native defaults; no pixel adjustment or
+automatic substitution is performed by the binding.
+
+``FontCollection.findTypefaces(familyNames, fontStyle)`` accepts Python family
+strings and returns owning native typefaces in native order, including duplicate
+matches and the existing default-family fallback. It does not implement matching
+in the binding. ``setDynamicFontManager()`` retains a native manager searched
+before asset/default managers; ``clearCaches()`` explicitly invalidates native
+paragraph/typeface caches after configuration changes. ``None`` removes a manager.
+
+``FontMgr.legacyMakeTypeface(None, style)`` passes a null family pointer for native
+default selection. Existing string arguments keep their previous behavior.

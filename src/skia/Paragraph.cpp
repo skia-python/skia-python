@@ -9,6 +9,61 @@
 
 using namespace skia::textlayout;
 
+namespace {
+// SkParagraph visitor arrays are borrowed, and extendedVisit frees some of them
+// immediately after the callback. Copy them while the callback is executing so
+// Python can retain the result, including its font, after relayout/destruction.
+struct ParagraphVisitorInfo {
+    SkFont font;
+    SkPoint origin;
+    SkScalar advanceX;
+    int count;
+    std::vector<SkGlyphID> glyphs;
+    std::vector<SkPoint> positions;
+    std::vector<uint32_t> utf8Starts;
+    unsigned flags;
+
+    // Snapshot the native visitor's font, positions and UTF-8 cluster offsets.
+    explicit ParagraphVisitorInfo(const Paragraph::VisitorInfo& info)
+        : font(info.font), origin(info.origin), advanceX(info.advanceX),
+          count(info.count), flags(info.flags) {
+        if (count > 0) {
+            glyphs.assign(info.glyphs, info.glyphs + count);
+            positions.assign(info.positions, info.positions + count);
+        }
+        if (info.utf8Starts && count > 0) {
+            utf8Starts.assign(info.utf8Starts, info.utf8Starts + count);
+        }
+    }
+};
+
+struct ParagraphExtendedVisitorInfo {
+    SkFont font;
+    SkPoint origin;
+    SkSize advance;
+    int count;
+    std::vector<SkGlyphID> glyphs;
+    std::vector<SkPoint> positions;
+    std::vector<SkRect> bounds;
+    std::vector<uint32_t> utf8Starts;
+    unsigned flags;
+
+    // Snapshot native glyph ink bounds as well as all ordinary visitor data.
+    explicit ParagraphExtendedVisitorInfo(const Paragraph::ExtendedVisitorInfo& info)
+        : font(info.font), origin(info.origin), advance(info.advance),
+          count(info.count), flags(info.flags) {
+        if (count > 0) {
+            glyphs.assign(info.glyphs, info.glyphs + count);
+            positions.assign(info.positions, info.positions + count);
+            bounds.assign(info.bounds, info.bounds + count);
+        }
+        if (info.utf8Starts && count > 0) {
+            utf8Starts.assign(info.utf8Starts, info.utf8Starts + count);
+        }
+    }
+};
+}  // namespace
+
 void initParagraph(py::module &m) {
 
 py::class_<FontCollection, sk_sp<FontCollection>, SkRefCnt> font_collection(m, "textlayout_FontCollection");
@@ -18,6 +73,66 @@ py::class_<StrutStyle> strut_style(m, "textlayout_StrutStyle");
 py::class_<TextStyle> text_style(m, "textlayout_TextStyle");
 py::class_<Paragraph> paragraph(m, "textlayout_Paragraph");
 py::class_<TypefaceFontProvider, sk_sp<TypefaceFontProvider>, SkFontMgr> typeface_font_provider(m, "textlayout_TypefaceFontProvider");
+
+py::enum_<RectHeightStyle>(m, "textlayout_RectHeightStyle")
+    .value("kTight", RectHeightStyle::kTight)
+    .value("kMax", RectHeightStyle::kMax)
+    .value("kIncludeLineSpacingMiddle", RectHeightStyle::kIncludeLineSpacingMiddle)
+    .value("kIncludeLineSpacingTop", RectHeightStyle::kIncludeLineSpacingTop)
+    .value("kIncludeLineSpacingBottom", RectHeightStyle::kIncludeLineSpacingBottom)
+    .value("kStrut", RectHeightStyle::kStrut);
+py::enum_<RectWidthStyle>(m, "textlayout_RectWidthStyle")
+    .value("kTight", RectWidthStyle::kTight)
+    .value("kMax", RectWidthStyle::kMax);
+py::enum_<TextDirection>(m, "textlayout_TextDirection")
+    .value("kRtl", TextDirection::kRtl)
+    .value("kLtr", TextDirection::kLtr);
+py::class_<TextBox>(m, "textlayout_TextBox")
+    .def_readonly("rect", &TextBox::rect)
+    .def_readonly("direction", &TextBox::direction);
+py::class_<TextRange>(m, "textlayout_TextRange")
+    .def_readonly("start", &TextRange::start)
+    .def_readonly("end", &TextRange::end);
+
+// Numeric line metrics are value copies. The internal StyleMetrics map contains
+// paragraph-owned TextStyle pointers and is intentionally not exposed here.
+py::class_<LineMetrics>(m, "textlayout_LineMetrics")
+    .def_readonly("fStartIndex", &LineMetrics::fStartIndex)
+    .def_readonly("fEndIndex", &LineMetrics::fEndIndex)
+    .def_readonly("fEndExcludingWhitespaces", &LineMetrics::fEndExcludingWhitespaces)
+    .def_readonly("fEndIncludingNewline", &LineMetrics::fEndIncludingNewline)
+    .def_readonly("fHardBreak", &LineMetrics::fHardBreak)
+    .def_readonly("fAscent", &LineMetrics::fAscent)
+    .def_readonly("fDescent", &LineMetrics::fDescent)
+    .def_readonly("fUnscaledAscent", &LineMetrics::fUnscaledAscent)
+    .def_readonly("fHeight", &LineMetrics::fHeight)
+    .def_readonly("fWidth", &LineMetrics::fWidth)
+    .def_readonly("fLeft", &LineMetrics::fLeft)
+    .def_readonly("fBaseline", &LineMetrics::fBaseline)
+    .def_readonly("fLineNumber", &LineMetrics::fLineNumber);
+py::class_<Paragraph::FontInfo>(paragraph, "FontInfo")
+    .def_readonly("fFont", &Paragraph::FontInfo::fFont)
+    .def_readonly("fTextRange", &Paragraph::FontInfo::fTextRange);
+py::class_<ParagraphVisitorInfo>(paragraph, "VisitorInfo")
+    .def_readonly("font", &ParagraphVisitorInfo::font)
+    .def_readonly("origin", &ParagraphVisitorInfo::origin)
+    .def_readonly("advanceX", &ParagraphVisitorInfo::advanceX)
+    .def_readonly("count", &ParagraphVisitorInfo::count)
+    .def_readonly("glyphs", &ParagraphVisitorInfo::glyphs)
+    .def_readonly("positions", &ParagraphVisitorInfo::positions)
+    .def_readonly("utf8Starts", &ParagraphVisitorInfo::utf8Starts)
+    .def_readonly("flags", &ParagraphVisitorInfo::flags);
+py::class_<ParagraphExtendedVisitorInfo>(paragraph, "ExtendedVisitorInfo")
+    .def_readonly("font", &ParagraphExtendedVisitorInfo::font)
+    .def_readonly("origin", &ParagraphExtendedVisitorInfo::origin)
+    .def_readonly("advance", &ParagraphExtendedVisitorInfo::advance)
+    .def_readonly("count", &ParagraphExtendedVisitorInfo::count)
+    .def_readonly("glyphs", &ParagraphExtendedVisitorInfo::glyphs)
+    .def_readonly("positions", &ParagraphExtendedVisitorInfo::positions)
+    .def_readonly("bounds", &ParagraphExtendedVisitorInfo::bounds)
+    .def_readonly("utf8Starts", &ParagraphExtendedVisitorInfo::utf8Starts)
+    .def_readonly("flags", &ParagraphExtendedVisitorInfo::flags);
+paragraph.attr("kWhiteSpace_VisitorFlag") = py::int_(static_cast<unsigned>(Paragraph::kWhiteSpace_VisitorFlag));
 
 py::enum_<TextAlign>(m, "textlayout_TextAlign", R"docstring(
     )docstring")
@@ -136,6 +251,12 @@ strut_style
 
 paragraph_style
     .def(py::init())
+    .def("setMaxLines", &ParagraphStyle::setMaxLines,
+        "Set the native maximum laid-out line count.", py::arg("maxLines"))
+    .def("hintingIsOn", &ParagraphStyle::hintingIsOn,
+        "Return the native paragraph hinting flag.")
+    .def("turnHintingOff", &ParagraphStyle::turnHintingOff,
+        "Disable paragraph hinting through the native implementation.")
     .def("setTextStyle",
         py::overload_cast<const TextStyle&>(&ParagraphStyle::setTextStyle),
         R"docstring(
@@ -155,6 +276,26 @@ paragraph_style
 
 font_collection
     .def(py::init())
+    .def("findTypefaces",
+        [] (FontCollection& collection, const std::vector<std::string>& families,
+            SkFontStyle style) {
+            std::vector<SkString> nativeFamilies;
+            nativeFamilies.reserve(families.size());
+            for (const auto& family : families) {
+                nativeFamilies.emplace_back(family.c_str());
+            }
+            return collection.findTypefaces(nativeFamilies, style);
+        },
+        "Return owning native matches in requested order, including native default fallback.",
+        py::arg("familyNames"), py::arg("fontStyle"))
+    .def("setDynamicFontManager", &FontCollection::setDynamicFontManager,
+        "Set the native dynamic manager, searched before asset and default managers.",
+        py::arg("fontManager"))
+    .def("clearCaches", &FontCollection::clearCaches,
+        "Clear the collection's native paragraph/typeface caches without recreating results.")
+    .def("setAssetFontManager", &FontCollection::setAssetFontManager,
+        "Set the asset font manager; retain the existing native fallback policy.",
+        py::arg("fontManager"))
     .def("setDefaultFontManager",
         py::overload_cast<sk_sp<SkFontMgr>>(&FontCollection::setDefaultFontManager),
         R"docstring(
@@ -174,6 +315,17 @@ font_collection
 
 text_style
     .def(py::init())
+    .def("setTypeface", &TextStyle::setTypeface,
+        "Retain the native typeface used for this style's font metrics.", py::arg("typeface"))
+    .def("setFontHinting", &TextStyle::setFontHinting,
+        "Set the native font hinting used by this text style's shaped runs.", py::arg("hinting"))
+    .def("getFontHinting", &TextStyle::getFontHinting,
+        "Return this text style's native font hinting.")
+    .def("getFontMetrics", [](const TextStyle& self) {
+        SkFontMetrics metrics;
+        self.getFontMetrics(&metrics);
+        return metrics;
+    }, "Return an owning copy of native style metrics, including native height/baseline adjustments.")
     .def("cloneForPlaceholder", &TextStyle::cloneForPlaceholder)
     .def("setColor",
         py::overload_cast<SkColor>(&TextStyle::setColor),
@@ -287,6 +439,57 @@ paragraph
         R"docstring(
         )docstring",
         py::arg("canvas"), py::arg("x"), py::arg("y"))
+    .def("getRectsForRange", &Paragraph::getRectsForRange,
+        "Return native text boxes for the half-open UTF-16 range [start, end).",
+        py::arg("start"), py::arg("end"), py::arg("rectHeightStyle"), py::arg("rectWidthStyle"))
+    .def("getLineMetrics", [](Paragraph& self) {
+        std::vector<LineMetrics> metrics;
+        self.getLineMetrics(metrics);
+        return metrics;
+    }, "Return copies of the numeric line metrics after layout.")
+    .def("getLineMetricsAt", [](const Paragraph& self, int lineNumber) -> py::object {
+        LineMetrics metrics;
+        if (!self.getLineMetricsAt(lineNumber, &metrics)) {
+            return py::none();
+        }
+        return py::cast(std::move(metrics));
+    }, "Return a line's numeric metrics, or None for an invalid zero-based line.",
+       py::arg("lineNumber"))
+    .def("lineNumber", &Paragraph::lineNumber, "Return the number of laid-out lines.")
+    .def("getActualTextRange", &Paragraph::getActualTextRange,
+        "Return the native UTF-8 byte range; includeSpaces controls trailing whitespace.",
+        py::arg("lineNumber"), py::arg("includeSpaces"))
+    .def("unresolvedGlyphs", &Paragraph::unresolvedGlyphs,
+        "Return the native unresolved glyph count (-1 when not yet shaped).")
+    .def("unresolvedCodepoints", &Paragraph::unresolvedCodepoints,
+        "Return the native set of unresolved Unicode code points.")
+    .def("getFonts", &Paragraph::getFonts,
+        "Return actual shaping fonts and their native UTF-8 text ranges as value copies.")
+    .def("getFontAtUTF16Offset", &Paragraph::getFontAtUTF16Offset,
+        "Return the actual shaping font at a UTF-16 offset.", py::arg("codeUnitIndex"))
+    .def("visit", [](Paragraph& self, const py::function& visitor) {
+        self.visit([&visitor](int lineNumber, const Paragraph::VisitorInfo* info) {
+            visitor(lineNumber, info ? py::cast(ParagraphVisitorInfo(*info)) : py::none());
+        });
+    }, R"docstring(
+        Call visitor(lineNumber, info) for every native glyph run.
+
+        info is an owning VisitorInfo snapshot, or None at a native line-end
+        callback. Arrays retain native order; utf8Starts contains the first
+        count cluster offsets, without an inferred terminal offset. Python
+        exceptions propagate to the caller.
+    )docstring", py::arg("visitor"))
+    .def("extendedVisit", [](Paragraph& self, const py::function& visitor) {
+        self.extendedVisit([&visitor](int lineNumber, const Paragraph::ExtendedVisitorInfo* info) {
+            visitor(lineNumber, info ? py::cast(ParagraphExtendedVisitorInfo(*info)) : py::none());
+        });
+    }, R"docstring(
+        Call visitor(lineNumber, info) with native glyph positions and ink bounds.
+
+        info is an owning ExtendedVisitorInfo snapshot, or None at a native
+        line-end callback. Glyph bounds are not joined, shifted or estimated.
+        The snapshot remains valid after callback return or paragraph relayout.
+    )docstring", py::arg("visitor"))
     ;
 
 typeface_font_provider
@@ -312,4 +515,7 @@ m.attr("textlayout").attr("TextAlign") = m.attr("textlayout_TextAlign");
 m.attr("textlayout").attr("TextDecoration") = m.attr("textlayout_TextDecoration");
 m.attr("textlayout").attr("TextDecorationStyle") = m.attr("textlayout_TextDecorationStyle");
 m.attr("textlayout").attr("TextDecorationMode") = m.attr("textlayout_TextDecorationMode");
+for (const char* name : {"RectHeightStyle", "RectWidthStyle", "TextDirection", "TextBox", "TextRange", "LineMetrics"}) {
+    m.attr("textlayout").attr(name) = m.attr((std::string("textlayout_") + name).c_str());
+}
 }
