@@ -30,6 +30,24 @@ Or:
 
 For unsupported platforms, check the `Build instruction`_.
 
+The Linux wheels include their own copy of fontconfig in ``skia_python.libs``.
+If your system fontconfig is strictly newer, you can make skia-python use it
+instead, so that it reads the same configuration and font cache as the rest of
+your system. Install ``patchelf`` (for example with ``pip install patchelf``),
+then run:
+
+.. code-block:: bash
+
+    SKIA_SO=$(python -c 'import skia; print(skia.__file__)')
+    # Prints the name of the included library, such as libfontconfig-dcb2ce6c.so.1.12.0
+    patchelf --print-needed "$SKIA_SO" | grep fontconfig
+    # Replace that name with the system library
+    patchelf --replace-needed libfontconfig-dcb2ce6c.so.1.12.0 libfontconfig.so.1 "$SKIA_SO"
+    # Check that fontconfig now loads from a system directory
+    ldd "$SKIA_SO" | grep fontconfig
+
+Upgrading skia-python undoes this change.
+
 
 Build instruction
 -----------------
