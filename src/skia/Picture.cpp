@@ -3,6 +3,7 @@
 #include <include/core/SkBBHFactory.h>
 #include <include/core/SkPictureRecorder.h>
 #include <pybind11/operators.h>
+#include <pybind11/stl.h>
 
 namespace {
 
@@ -27,11 +28,32 @@ public:
 class PyBBoxHierarchy : public SkBBoxHierarchy {
 public:
     using SkBBoxHierarchy::SkBBoxHierarchy;
+
+    // https://pybind11.readthedocs.io/en/stable/advanced/classes.html#different-method-signatures
     void insert(const SkRect rects[], int N) override {
-        PYBIND11_OVERRIDE_PURE(void, SkBBoxHierarchy, insert, rects, N);
+        pybind11::gil_scoped_acquire gil;
+        pybind11::function override = pybind11::get_override(this, "insert");
+        if (override) {
+            override(std::vector<SkRect>(rects, rects + N));
+        }
+    }
+    void insert(const SkRect rects[], const Metadata metadata[], int N) override {
+        pybind11::gil_scoped_acquire gil;
+        pybind11::function override = pybind11::get_override(this, "insert");
+        if (override) {
+            override(std::vector<SkRect>(rects, rects + N),
+                std::vector<Metadata>(metadata, metadata + N));
+        }
     }
     void search(const SkRect& query, std::vector<int> *results) const override {
-        PYBIND11_OVERRIDE_PURE(void, SkBBoxHierarchy, search, query, results);
+        pybind11::gil_scoped_acquire gil;
+        pybind11::function override = pybind11::get_override(this, "search");
+        if (override) {
+            auto obj = override(query);
+            if (py::isinstance<py::list>(obj)) {
+                *results = obj.cast<std::vector<int>>();
+            }
+        }
     }
     size_t bytesUsed() const override {
         PYBIND11_OVERRIDE_PURE(size_t, SkBBoxHierarchy, bytesUsed);
@@ -289,21 +311,30 @@ py::class_<SkBBoxHierarchy::Metadata>(bboxhierarchy, "Metadata")
 bboxhierarchy
     .def(py::init())
     .def("insert",
-        py::overload_cast<const SkRect[], int>(&SkBBoxHierarchy::insert),
+        [] (SkBBoxHierarchy& bbh, const std::vector<SkRect>& rects) {
+            return bbh.insert(rects.data(), rects.size());
+        },
         R"docstring(
         Insert N bounding boxes into the hierarchy.
         )docstring",
-        py::arg("rects"), py::arg("N"))
+        py::arg("rects"))
     .def("insert",
-        py::overload_cast<const SkRect[], const SkBBoxHierarchy::Metadata[],
-            int>(&SkBBoxHierarchy::insert),
-        py::arg("rects"), py::arg("metadata"), py::arg("N"))
-    .def("search", &SkBBoxHierarchy::search,
+        [] (SkBBoxHierarchy& bbh, const std::vector<SkRect>& rects,
+            const std::vector<SkBBoxHierarchy::Metadata>& metadata) {
+            return bbh.insert(rects.data(), metadata.data(), rects.size());
+        },
+        py::arg("rects"), py::arg("metadata"))
+    .def("search",
+        [] (SkBBoxHierarchy& bbh, const SkRect& query) {
+            std::vector<int> results;
+            bbh.search(query, &results);
+            return results;
+        },
         R"docstring(
         Populate results with the indices of bounding boxes intersecting that
         query.
         )docstring",
-        py::arg("query"), py::arg("results"))
+        py::arg("query"))
     .def("bytesUsed", &SkBBoxHierarchy::bytesUsed,
         R"docstring(
         Return approximate size in memory of this.
